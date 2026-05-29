@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Manual Status | Deuces Wild</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body x-data="statusAdmin()" x-init="load()">
+<main id="main" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem">
+  <div class="panel" style="max-width:440px;width:100%">
+    <div class="flex aic" style="justify-content:space-between">
+      <h1 style="margin:0">Manual Status</h1>
+      <a class="btn btn-ghost" href="/admin/checkin.html" style="font-size:.85rem;padding:.35rem .6rem">← Check-In</a>
+    </div>
+    <p class="muted">Fallback for the home-page widget when you're <strong>not</strong> running the QR check-in. The live system overrides this automatically whenever a table is active.</p>
+
+    <form @submit.prevent="save" class="mt-2">
+      <div class="field">
+        <label>Right now we are…</label>
+        <div class="cta-row">
+          <button type="button" class="btn" :class="open?'btn-gold':'btn-ghost'" @click="open=true">🟢 Open</button>
+          <button type="button" class="btn" :class="!open?'btn-red':'btn-ghost'" @click="open=false">Closed</button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="msg">Message (shown on the site)</label>
+        <input id="msg" type="text" x-model="message" maxlength="140" :placeholder="open?'Doors are open — come on in!':'Doors open Wednesday at 7 PM'">
+      </div>
+      <button class="btn btn-gold btn-block" type="submit" :disabled="busy" x-text="busy?'Saving…':'Update Home Page Status'">Update</button>
+      <div class="status-msg ok mt-2" x-show="saved" x-cloak>Saved. The home page will reflect this within ~60 seconds.</div>
+      <div class="status-msg err mt-2" x-show="err" x-cloak x-text="errMsg"></div>
+    </form>
+    <p class="form-note mt-2" x-show="updated" x-cloak>Last set: <span x-text="updated"></span></p>
+  </div>
+</main>
+<script>
+function statusAdmin(){return{ open:false, message:'', busy:false, saved:false, err:false, errMsg:'', updated:'',
+  async load(){ try{ const r=await fetch('/api/status'); if(r.status===401){location.href='/admin/login.html';return;} const d=await r.json(); if(d.manual){ this.open=!!d.manual.open; this.message=d.manual.message||''; if(d.manual.updated) this.updated=new Date(d.manual.updated*1000).toLocaleString(); } }catch(e){} },
+  async save(){ this.busy=true; this.err=false; this.saved=false;
+    try{ const r=await fetch('/api/status',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({open:this.open,message:this.message})});
+      if(r.status===401){location.href='/admin/login.html';return;}
+      const d=await r.json(); if(r.ok&&d.ok){ this.saved=true; if(d.manual&&d.manual.updated) this.updated=new Date(d.manual.updated*1000).toLocaleString(); }
+      else { this.err=true; this.errMsg=d.error||'Could not save.'; } }
+    catch(e){ this.err=true; this.errMsg='Network error.'; } finally{ this.busy=false; } }
+}};
+</script>
+</body>
+</html>

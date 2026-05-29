@@ -1,0 +1,46 @@
+{
+  // Deuces Wild Poker Club — Cloudflare Workers config.
+  // Extends Cloudflare's auto-generated static-assets config with a Worker
+  // entry (worker.js) for the seat-tracking API + admin auth, plus D1 & KV.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "deuceswildpokertx",
+  "main": "worker.js",
+  "compatibility_date": "2026-05-28",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    // Run the Worker on every request so the /admin/* auth gate is enforced
+    // (without this, static admin HTML would be served without auth).
+    "run_worker_first": true
+  },
+
+  // ---- D1 database (seat tracking) ----
+  // Create it, then paste its database_id here:
+  //   (Dashboard) Workers & Pages -> D1 -> Create -> name: dwp-tracking
+  //   (or CLI)    npx wrangler d1 create dwp-tracking
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "dwp-tracking",
+      "database_id": "7c5e835e-08c3-4a89-8eeb-d7d5f020df63"
+    }
+  ],
+
+  // ---- KV namespace (SMS opt-in queue + manual status override) ----
+  // Create it, then paste its id here:
+  //   (Dashboard) Workers & Pages -> KV -> Create -> name: DWP_STATUS
+  //   (or CLI)    npx wrangler kv namespace create DWP_STATUS
+  "kv_namespaces": [
+    {
+      "binding": "STATUS",
+      "id": "9b0a5f8927a54309938bc1ae65b53153"
+    }
+  ]
+
+  // ADMIN_PASSWORD is a SECRET — do not put it here. Set it in the dashboard
+  // (Worker -> Settings -> Variables and Secrets -> add ADMIN_PASSWORD, encrypted)
+  // or via:  npx wrangler secret put ADMIN_PASSWORD
+}

@@ -1,0 +1,63 @@
+<!-- PARTIAL: footer.html START
+   Place before </body> (after main content). Contains the sitewide SMS opt-in,
+   nav links, NAP, and the §47.02 trust line. PHONE: replace (936) 000-0000. -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="divider-suits" aria-hidden="true">
+      <svg class="suit suit-gold" viewBox="0 0 24 24"><use href="#suit-spade"/></svg>
+      <svg class="suit suit-red" viewBox="0 0 24 24"><use href="#suit-heart"/></svg>
+      <svg class="suit suit-red" viewBox="0 0 24 24"><use href="#suit-diamond"/></svg>
+      <svg class="suit suit-gold" viewBox="0 0 24 24"><use href="#suit-club"/></svg>
+    </div>
+
+    <div class="footer-grid">
+      <div>
+        <h4>Deuces Wild Poker Club</h4>
+        <p class="muted" style="margin-bottom:.6rem">Huntsville's rake-free, locally owned private poker club. Walk in any night we're open — no membership required to come check it out.</p>
+        <p class="mono" style="font-size:.95rem;margin:0">
+          <a href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">120 FM 2821 Rd E, Huntsville, TX 77320</a><br>
+          <a href="tel:+19360000000">(936) 000-0000</a> · tap to call or text<br>
+          Wed–Fri 7 PM · Sat 6 PM — Last Hand
+        </p>
+      </div>
+
+      <div>
+        <h4>Visit</h4>
+        <ul class="footer-links">
+          <li><a href="/first-visit/">Plan Your First Visit</a></li>
+          <li><a href="/tournaments/">This Week's Tournaments</a></li>
+          <li><a href="/cash-games/">Cash Games</a></li>
+          <li><a href="/why-deuces-wild/">Why Drive Here</a></li>
+          <li><a href="/is-this-legal/">Is This Legal?</a></li>
+          <li><a href="/refer/">Bring a Friend</a></li>
+          <li><a href="/contact/">Contact &amp; Directions</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <!-- SMS opt-in (see sms-optin.html partial) -->
+        <div class="sms-optin" x-data="smsOptin()">
+          <h4 style="margin-top:0">Text <span class="gold">DEUCE</span> for the weekly action</h4>
+          <p class="form-note" style="margin:.25rem 0 .9rem">Schedule, tournament reminders &amp; high-hand alerts. Text STOP anytime.</p>
+          <form @submit.prevent="submit" x-show="!done">
+            <div class="row">
+              <label class="skip-link" for="f-sms-phone">Mobile number</label>
+              <input id="f-sms-phone" type="tel" x-model="phone" placeholder="Your mobile number" autocomplete="tel" required>
+              <button class="btn btn-gold" type="submit" :disabled="busy" x-text="busy?'Sending…':'Sign Up'">Sign Up</button>
+            </div>
+            <input type="text" x-model="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+            <p class="form-note" style="margin:.6rem 0 0">Recurring automated texts. Msg &amp; data rates may apply. Reply STOP to opt out.</p>
+          </form>
+          <div class="status-msg ok" x-show="done" x-cloak x-text="msg"></div>
+          <div class="status-msg err" x-show="err" x-cloak x-text="msg"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <span>Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). Rake-free. Locally owned by Mike &amp; Terry Don. <a href="/is-this-legal/">Read how this works →</a></span>
+      <span>&copy; <span x-data x-text="new Date().getFullYear()">2026</span> Deuces Wild Poker Club · <a href="/privacy-policy/">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+<!-- PARTIAL: footer.html END -->

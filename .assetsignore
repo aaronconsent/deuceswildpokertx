@@ -3,3 +3,7 @@
 .assetsignore
 worker.js
 wrangler.jsonc
+functions
+db
+_partials
+README.md

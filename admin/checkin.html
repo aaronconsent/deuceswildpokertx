@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Host Check-In | Deuces Wild</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+<style>
+  .admin-top{position:sticky;top:0;z-index:30;background:var(--bg-2);border-bottom:1px solid var(--line);padding:.6rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+  .admin-top h1{font-size:1.5rem;margin:0}
+  #reader{width:100%;max-width:420px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .scan-wrap{background:var(--panel);padding:1rem;border-bottom:1px solid var(--line)}
+  .tbl-grid{display:grid;gap:1rem;grid-template-columns:1fr;padding:1rem}
+  @media(min-width:720px){.tbl-grid{grid-template-columns:1fr 1fr}}
+  .tbl-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1rem}
+  .tbl-card.idle{opacity:.7}
+  .tbl-head{display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-bottom:.6rem}
+  .tbl-head .game{font-family:var(--f-display);font-size:1.4rem;letter-spacing:.03em}
+  .seats{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem}
+  .seat{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:.8rem;border:1px solid rgba(255,255,255,.08);background:#222;color:var(--ink-faint);cursor:pointer}
+  .seat.occ{background:var(--green-live);color:#062;border-color:transparent;font-weight:700}
+  .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:60;display:flex;align-items:center;justify-content:center;padding:1rem}
+  .modal{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:1.5rem;max-width:420px;width:100%;text-align:center}
+  .modal h2{margin-top:0}
+  .toast{position:fixed;left:50%;bottom:1.2rem;transform:translateX(-50%);z-index:70;background:var(--gold);color:#1a1400;font-weight:700;padding:.7rem 1.2rem;border-radius:10px;box-shadow:var(--shadow)}
+  .btnrow{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+  .manual{display:flex;gap:.5rem;max-width:420px;margin:.75rem auto 0}
+  .manual input{flex:1}
+</style>
+</head>
+<body x-data="checkin()" x-init="init()">
+
+<div class="admin-top">
+  <h1>Host Check-In</h1>
+  <div class="flex aic gap" style="gap:.5rem">
+    <a class="btn btn-ghost" href="/admin/sessions.html" style="font-size:.9rem;padding:.4rem .7rem">History</a>
+    <button class="btn btn-ghost" style="font-size:.9rem;padding:.4rem .7rem" @click="logout()">Log out</button>
+  </div>
+</div>
+
+<!-- Scanner -->
+<div class="scan-wrap">
+  <div id="reader"></div>
+  <div class="center mt-2">
+    <button class="btn btn-gold" x-show="!cameraOn" @click="startCamera()">Start Camera</button>
+    <button class="btn btn-ghost" x-show="cameraOn" @click="stopCamera()">Pause Camera</button>
+  </div>
+  <div class="manual">
+    <input type="text" x-model="manualCode" placeholder="…or type a seat code (e.g. t1-s3)" @keydown.enter="doScan(manualCode); manualCode=''">
+    <button class="btn btn-ghost" @click="doScan(manualCode); manualCode=''">Go</button>
+  </div>
+  <p class="form-note center mt-1" x-text="cameraMsg"></p>
+</div>
+
+<!-- Dashboard -->
+<div class="tbl-grid">
+  <template x-for="t in tables" :key="t.table_id">
+    <div class="tbl-card" :class="{idle: !t.session}">
+      <div class="tbl-head">
+        <span class="game gold">Table <span x-text="t.table_number"></span></span>
+        <span class="mono muted" x-show="t.session" x-text="gameLabel(t.session.game_type) + ' · ' + dur(t.session.started_at)"></span>
+        <span class="mono muted" x-show="!t.session">Idle — scan a seat to start</span>
+      </div>
+      <div class="flex aic" style="justify-content:space-between;margin-bottom:.5rem" x-show="t.session">
+        <span class="mono" x-text="t.seated + '/' + t.total_seats + ' seated' + (t.players_remaining!=null ? ' · '+t.players_remaining+' left' : '')"></span>
+        <button class="btn btn-red" style="font-size:.85rem;padding:.4rem .7rem" @click="endSession(t)">End <span x-text="gameLabel(t.session.game_type)"></span></button>
+      </div>
+      <div class="seats">
+        <template x-for="s in t.seats" :key="s.qr">
+          <div class="seat" :class="{occ:s.occupied}" @click="doScan(s.qr)" :title="s.qr" x-text="s.seat_number"></div>
+        </template>
+      </div>
+    </div>
+  </template>
+  <template x-if="tables.length===0">
+    <p class="muted center">No tables loaded. Check the database binding (see README).</p>
+  </template>
+</div>
+
+<!-- Modal: pick a game (start session) -->
+<div class="modal-bg" x-show="modal.type==='need_game'" x-cloak>
+  <div class="modal">
+    <h2>Start a game at Table <span x-text="modal.data.table_number"></span></h2>
+    <p class="muted">Seat <span class="mono" x-text="modal.data.seat_qr"></span> will be the first player.</p>
+    <div class="btnrow">
+      <button class="btn btn-gold" @click="startGame('holdem_cash')">♠ Hold'em Cash</button>
+      <button class="btn btn-gold" @click="startGame('omaha_cash')">♦ Omaha Cash</button>
+      <button class="btn btn-gold" @click="startGame('tournament')">♣ Tournament</button>
+      <button class="btn btn-ghost" @click="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: confirm cash checkout -->
+<div class="modal-bg" x-show="modal.type==='confirm_checkout'" x-cloak>
+  <div class="modal">
+    <h2>Check out Table <span x-text="modal.data.table_number"></span>, Seat <span x-text="modal.data.seat_number"></span>?</h2>
+    <p class="muted">Cash game — they're cashing out.</p>
+    <div class="btnrow">
+      <button class="btn btn-red" @click="confirmCheckout()">Check Out</button>
+      <button class="btn btn-ghost" @click="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: tournament bust-out vs moving tables -->
+<div class="modal-bg" x-show="modal.type==='confirm_bustout'" x-cloak>
+  <div class="modal">
+    <h2>Table <span x-text="modal.data.table_number"></span>, Seat <span x-text="modal.data.seat_number"></span></h2>
+    <p>Busting out now finishes in <strong class="gold" x-text="ordinal(modal.data.finish_position)"></strong> place.</p>
+    <div class="btnrow">
+      <button class="btn btn-red" @click="confirmBust('bust')">Busted Out (<span x-text="ordinal(modal.data.finish_position)"></span>)</button>
+      <button class="btn btn-ghost" @click="confirmBust('move')">Moving Tables (still in)</button>
+      <button class="btn btn-ghost" @click="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" x-show="toast" x-cloak x-text="toast" x-transition></div>
+
+<script>
+function checkin(){return{
+  tables:[], modal:{type:null,data:{}}, toast:'', manualCode:'',
+  cameraOn:false, cameraMsg:'', _qr:null, _last:{code:'',t:0}, _poll:null,
+
+  async init(){ await this.refresh(); this._poll=setInterval(()=>this.refresh(),15000); this.startCamera(); },
+
+  async refresh(){
+    try{ const r=await fetch('/api/admin/board'); if(r.status===401){location.href='/admin/login.html';return;}
+      const d=await r.json(); this.tables=d.tables||[]; }
+    catch(e){ /* keep last view */ }
+  },
+
+  async startCamera(){
+    if(this.cameraOn) return;
+    try{
+      if(!this._qr) this._qr=new Html5Qrcode('reader');
+      await this._qr.start({facingMode:'environment'},{fps:10,qrbox:240},
+        (text)=>this.onScan(text), ()=>{});
+      this.cameraOn=true; this.cameraMsg='Point the camera at a seat QR code.';
+    }catch(e){ this.cameraMsg='Camera unavailable — type the seat code below. ('+e+')'; }
+  },
+  async stopCamera(){ if(this._qr&&this.cameraOn){ try{await this._qr.stop();}catch(e){} this.cameraOn=false; this.cameraMsg='Camera paused.'; } },
+
+  onScan(text){
+    // QR may encode the bare token or a URL containing it; extract t#-s#.
+    const m=(text||'').match(/t\d+-s\d+/i); const code=m?m[0].toLowerCase():'';
+    if(!code) return;
+    const now=Date.now();
+    if(code===this._last.code && now-this._last.t<3000) return; // debounce dup scans
+    this._last={code,t:now};
+    this.doScan(code);
+  },
+
+  async doScan(code){
+    code=(code||'').trim().toLowerCase(); if(!code) return;
+    try{
+      const r=await fetch('/api/scan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({qr_token:code})});
+      if(r.status===401){location.href='/admin/login.html';return;}
+      const d=await r.json();
+      if(!r.ok){ this.flash(d.error||'Scan error'); return; }
+      if(d.action==='checked_in'){ this.flash('✓ Seated T'+d.table_number+' S'+d.seat_number); this.refresh(); }
+      else if(d.action==='need_game'){ this.modal={type:'need_game',data:d}; }
+      else if(d.action==='confirm_checkout'){ this.modal={type:'confirm_checkout',data:d}; }
+      else if(d.action==='confirm_bustout'){ this.modal={type:'confirm_bustout',data:d}; }
+    }catch(e){ this.flash('Network error'); }
+  },
+
+  async startGame(game){
+    const d=this.modal.data;
+    await this.post('/api/session/start',{table_id:d.table_id,game_type:game,seat_qr:d.seat_qr});
+    this.flash('Game started · '+this.gameLabel(game)); this.closeModal(); this.refresh();
+  },
+  async confirmCheckout(){
+    const d=this.modal.data;
+    await this.post('/api/checkout',{seat_qr:d.seat_qr,session_id:d.session_id,type:'cash'});
+    this.flash('✓ Cashed out S'+d.seat_number); this.closeModal(); this.refresh();
+  },
+  async confirmBust(type){
+    const d=this.modal.data;
+    await this.post('/api/checkout',{seat_qr:d.seat_qr,session_id:d.session_id,type:type,finish_position:type==='bust'?d.finish_position:null});
+    this.flash(type==='bust'?('Out in '+this.ordinal(d.finish_position)):'Moved (still in)'); this.closeModal(); this.refresh();
+  },
+  async endSession(t){
+    if(!t.session) return;
+    if(!confirm('End '+this.gameLabel(t.session.game_type)+' at Table '+t.table_number+'? This checks out every remaining seat.')) return;
+    await this.post('/api/session/end',{session_id:t.session.id});
+    this.flash('Session ended · Table '+t.table_number); this.refresh();
+  },
+
+  async post(url,body){ try{ const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); if(r.status===401){location.href='/admin/login.html';} return r;}catch(e){ this.flash('Network error'); } },
+  async logout(){ await fetch('/api/login?logout=1',{method:'POST'}); location.href='/admin/login.html'; },
+
+  closeModal(){ this.modal={type:null,data:{}}; },
+  flash(m){ this.toast=m; clearTimeout(this._tt); this._tt=setTimeout(()=>this.toast='',2500); },
+  gameLabel(g){ return {holdem_cash:"Hold'em Cash",omaha_cash:'Omaha Cash',tournament:'Tournament'}[g]||g; },
+  ordinal(n){ if(n==null) return ''; const s=['th','st','nd','rd'],v=n%100; return n+(s[(v-20)%10]||s[v]||s[0]); },
+  dur(start){ const sec=Math.max(0,Math.floor(Date.now()/1000)-start); const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60); return h?`${h}h ${m}m`:`${m}m`; },
+}};
+</script>
+</body>
+</html>

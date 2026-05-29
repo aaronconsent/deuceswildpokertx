@@ -1,0 +1,9 @@
+{
+  "_comment": "Recent winners + high hands for the home-page rotation and /winners/. Placeholder entries until real results are pulled from D1 (Prompt 4) or entered by hosts. Keep first names + initial only; photos optional, with permission.",
+  "updated": "2026-05-28",
+  "winners": [
+    { "name": "Placeholder W.", "event": "Wednesday Hold'em Tournament", "result": "1st Place", "date": "2026-05-27", "photo": "" },
+    { "name": "Placeholder R.", "event": "Saturday Hold'em Tournament", "result": "1st Place", "date": "2026-05-24", "photo": "" },
+    { "name": "Placeholder M.", "event": "High Hand — Quad Aces", "result": "High Hand Bonus", "date": "2026-05-23", "photo": "" }
+  ]
+}

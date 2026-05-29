@@ -1,0 +1,37 @@
+<!-- PARTIAL: sms-optin.html START
+   Droppable SMS opt-in. POSTs to /api/sms-optin (logs to KV for now; SMS
+   provider wired in a later prompt). Self-contained Alpine component. -->
+<div class="sms-optin" x-data="smsOptin()">
+  <h4 style="margin-top:0">Text <span class="gold">DEUCE</span> for this week's action</h4>
+  <p class="form-note" style="margin:.25rem 0 .9rem">Weekly schedule, tournament reminders, and high-hand alerts. No spam — text STOP anytime.</p>
+  <form @submit.prevent="submit" x-show="!done">
+    <div class="row">
+      <label class="visually-hidden" for="sms-phone">Mobile number</label>
+      <input id="sms-phone" type="tel" name="phone" x-model="phone" placeholder="Your mobile number" autocomplete="tel" required>
+      <button class="btn btn-gold" type="submit" :disabled="busy" x-text="busy?'Sending…':'Sign Me Up'">Sign Me Up</button>
+    </div>
+    <input type="text" name="_gotcha" x-model="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+    <p class="form-note" style="margin:.6rem 0 0">By signing up you agree to receive recurring automated texts from Deuces Wild Poker Club. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</p>
+  </form>
+  <div class="status-msg ok" x-show="done" x-cloak x-text="msg"></div>
+  <div class="status-msg err" x-show="err" x-cloak x-text="msg"></div>
+</div>
+
+<script>
+function smsOptin(){return{
+  phone:'', hp:'', busy:false, done:false, err:false, msg:'',
+  async submit(){
+    if(this.hp){return;} // honeypot
+    this.busy=true; this.err=false;
+    try{
+      const r=await fetch('/api/sms-optin',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({phone:this.phone,source:location.pathname})});
+      const d=await r.json().catch(()=>({}));
+      if(r.ok&&d.ok){ this.done=true; this.msg="You're on the list. See you at the table."; }
+      else { this.err=true; this.msg=d.error||'Something went wrong — please try again or call us.'; }
+    }catch(e){ this.err=true; this.msg='Network error — please try again.'; }
+    finally{ this.busy=false; }
+  }
+};}
+</script>
+<!-- PARTIAL: sms-optin.html END -->

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Host Login | Deuces Wild</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+<main id="main" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem">
+  <div class="panel" style="max-width:380px;width:100%" x-data="login()">
+    <h1 style="font-size:2.4rem;text-align:center">Host Login</h1>
+    <p class="muted center" style="margin-top:-.5rem">Deuces Wild — staff only</p>
+    <form @submit.prevent="submit" class="mt-3">
+      <div class="field">
+        <label for="pw">Password</label>
+        <input id="pw" type="password" x-model="pw" autocomplete="current-password" required autofocus>
+      </div>
+      <button class="btn btn-gold btn-block btn-lg" type="submit" :disabled="busy" x-text="busy?'Checking…':'Log In'">Log In</button>
+      <div class="status-msg err mt-2" x-show="err" x-cloak x-text="msg"></div>
+    </form>
+  </div>
+</main>
+<script>
+function login(){return{ pw:'', busy:false, err:false, msg:'',
+  async submit(){ this.busy=true; this.err=false;
+    try{ const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:this.pw})});
+      const d=await r.json().catch(()=>({}));
+      if(r.ok&&d.ok){ location.href='/admin/checkin.html'; }
+      else { this.err=true; this.msg=d.error||'Login failed.'; this.busy=false; }
+    }catch(e){ this.err=true; this.msg='Network error.'; this.busy=false; }
+  }};}
+</script>
+</body>
+</html>

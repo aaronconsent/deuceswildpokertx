@@ -1,0 +1,35 @@
+<!-- PARTIAL: head.html START
+   Copy into every page's <head>. Replace the {{TITLE}}, {{DESC}}, {{CANON}},
+   {{OG_IMAGE}} tokens per page. Per-page JSON-LD schema goes in its own
+   <!-- SCHEMA START/END --> zone right after this block. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESC}}">
+<link rel="canonical" href="{{CANON}}">
+<meta name="theme-color" content="#0a0a0a">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Deuces Wild Poker Club">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESC}}">
+<meta property="og:url" content="{{CANON}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Fonts (Bebas Neue display + Outfit body, preserved from original site) + JetBrains Mono for numerals -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Design system -->
+<link rel="stylesheet" href="/assets/styles.css">
+
+<!-- Alpine.js (interactivity: nav drawer, FAQ, live widget, forms) -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+<!-- Existing analytics preserved from the original site -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HVN2X8QNGE"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HVN2X8QNGE');</script>
+<!-- PARTIAL: head.html END -->

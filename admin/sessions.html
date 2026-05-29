@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Session History | Deuces Wild</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body x-data="hist()" x-init="load()">
+<div class="wrap" style="padding-top:1.25rem;padding-bottom:3rem">
+  <div class="flex aic" style="justify-content:space-between;gap:.5rem">
+    <h1 style="margin:0">Session History</h1>
+    <a class="btn btn-ghost" href="/admin/checkin.html" style="font-size:.9rem;padding:.4rem .7rem">← Check-In</a>
+  </div>
+  <p class="muted">Last 30 days</p>
+
+  <div class="grid grid-4 mt-2">
+    <div class="card center"><h3 class="gold" x-text="stats.sessions_run||0"></h3><p class="muted mono">sessions run</p></div>
+    <div class="card center"><h3 class="gold" x-text="stats.tournaments||0"></h3><p class="muted mono">tournaments</p></div>
+    <div class="card center"><h3 class="gold" x-text="stats.total_checkins||0"></h3><p class="muted mono">total check-ins</p></div>
+    <div class="card center"><h3 class="gold" x-text="stats.active_now||0"></h3><p class="muted mono">active now</p></div>
+  </div>
+
+  <div class="panel mt-3" style="overflow-x:auto">
+    <table class="struct">
+      <thead><tr><th>Started</th><th>Table</th><th>Game</th><th>Check-ins</th><th>Status</th><th>Winner seat</th></tr></thead>
+      <tbody>
+        <template x-for="s in sessions" :key="s.id">
+          <tr>
+            <td class="num" x-text="fmt(s.started_at)"></td>
+            <td class="num" x-text="s.table_number"></td>
+            <td x-text="label(s.game_type)"></td>
+            <td class="num" x-text="s.total_checkins"></td>
+            <td><span class="badge" :class="s.status==='active'?'badge-now':'badge-gold'" x-text="s.status"></span></td>
+            <td class="num" x-text="s.winner_seat||'—'"></td>
+          </tr>
+        </template>
+        <template x-if="sessions.length===0"><tr><td colspan="6" class="muted">No sessions yet in the last 30 days.</td></tr></template>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+function hist(){return{ sessions:[], stats:{},
+  async load(){ try{ const r=await fetch('/api/admin/history'); if(r.status===401){location.href='/admin/login.html';return;} const d=await r.json(); this.sessions=d.sessions||[]; this.stats=d.stats||{}; }catch(e){} },
+  label(g){ return {holdem_cash:"Hold'em Cash",omaha_cash:'Omaha Cash',tournament:'Tournament'}[g]||g; },
+  fmt(t){ const d=new Date(t*1000); return d.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}); }
+}};
+</script>
+</body>
+</html>
