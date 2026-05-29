@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Seat QR Codes — Print Sheet | Deuces Wild</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<!-- qrcode-generator (dependency-free) renders the codes locally as crisp SVG; nothing is sent anywhere. -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<style>
+  :root{ --gold:#a9831f; --ink:#111; }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:#f4efe6; color:#111; font-family:'Outfit',system-ui,sans-serif; }
+
+  /* On-screen control bar (hidden when printing) */
+  .bar{ position:sticky; top:0; z-index:5; background:#0a0a0a; color:#faf3e0; padding:.9rem 1.25rem;
+        display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+  .bar h1{ font-family:'Bebas Neue',sans-serif; font-weight:400; letter-spacing:.03em; margin:0; font-size:1.6rem; }
+  .bar .hint{ font-size:.85rem; opacity:.8; max-width:46ch; }
+  .btn{ font-family:'Bebas Neue',sans-serif; font-size:1.25rem; letter-spacing:.05em; background:#d4af37; color:#1a1400;
+        border:0; border-radius:8px; padding:.6rem 1.4rem; cursor:pointer; text-decoration:none; }
+  a.btn.secondary{ background:transparent; color:#d4af37; border:1px solid #d4af37; }
+
+  .sheet{ padding:18px; }
+  .table-block{ break-inside:avoid; }
+  .table-title{ font-family:'Bebas Neue',sans-serif; letter-spacing:.04em; font-size:1.5rem; margin:8px 4px; color:#000; }
+  .grid{ display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; }
+
+  .card{ border:1.5px dashed #b9a36a; border-radius:10px; background:#fff; padding:10px 8px 8px;
+         text-align:center; break-inside:avoid; }
+  .card .brand{ font-family:'Bebas Neue',sans-serif; font-size:.8rem; letter-spacing:.12em; color:var(--gold); }
+  .card .qr{ width:100%; max-width:160px; margin:4px auto 6px; }
+  .card .qr svg{ width:100%; height:auto; display:block; }
+  .card .label{ font-family:'Bebas Neue',sans-serif; font-size:1.15rem; letter-spacing:.04em; line-height:1; color:#000; }
+  .card .code{ font-family:'JetBrains Mono',monospace; font-size:.72rem; color:#555; margin-top:2px; }
+
+  @media (max-width: 800px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+
+  @media print{
+    @page{ size:portrait; margin:12mm; }
+    body{ background:#fff; }
+    .bar{ display:none !important; }
+    .sheet{ padding:0; }
+    .grid{ grid-template-columns:repeat(5,1fr); gap:8px; }
+    .table-block{ page-break-after:always; }
+    .table-block:last-child{ page-break-after:auto; }
+    .card{ border-color:#999; }
+  }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <div>
+      <h1>Seat QR Codes — Print Sheet</h1>
+      <div class="hint">40 cards (4 tables × 10 seats). Print, laminate, cut on the dashed lines, and tape each to the back of the matching chair. One table per page.</div>
+    </div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+      <a class="btn secondary" href="/admin/checkin.html">← Check-In</a>
+      <button class="btn" onclick="window.print()">Print</button>
+    </div>
+  </div>
+
+  <div class="sheet" id="sheet"></div>
+
+<script>
+(function(){
+  var TABLES = 4, SEATS = 10;
+  var sheet = document.getElementById('sheet');
+
+  for (var t = 1; t <= TABLES; t++){
+    var block = document.createElement('div');
+    block.className = 'table-block';
+    var title = document.createElement('div');
+    title.className = 'table-title';
+    title.textContent = 'Table ' + t;
+    block.appendChild(title);
+
+    var grid = document.createElement('div');
+    grid.className = 'grid';
+
+    for (var s = 1; s <= SEATS; s++){
+      var token = 't' + t + '-s' + s;
+      var card = document.createElement('div');
+      card.className = 'card';
+
+      var brand = document.createElement('div');
+      brand.className = 'brand';
+      brand.textContent = 'DEUCES WILD';
+      card.appendChild(brand);
+
+      var qrBox = document.createElement('div');
+      qrBox.className = 'qr';
+      // Render the QR (encodes the bare seat token, e.g. "t1-s1") as scalable SVG.
+      var qr = qrcode(0, 'M');
+      qr.addData(token);
+      qr.make();
+      qrBox.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 1, scalable: true });
+      card.appendChild(qrBox);
+
+      var label = document.createElement('div');
+      label.className = 'label';
+      label.textContent = 'Table ' + t + ' · Seat ' + s;
+      card.appendChild(label);
+
+      var code = document.createElement('div');
+      code.className = 'code';
+      code.textContent = token;
+      card.appendChild(code);
+
+      grid.appendChild(card);
+    }
+    block.appendChild(grid);
+    sheet.appendChild(block);
+  }
+})();
+</script>
+</body>
+</html>
