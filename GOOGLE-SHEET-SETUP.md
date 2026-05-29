@@ -14,16 +14,15 @@ Worker formats the phone (E.164) + de-dupes, then appends the row to your sheet.
    function doPost(e) {
      try {
        var data = JSON.parse(e.postData.contents);
+       // Appends to your EXISTING sheet/numbers — adds a new row at the bottom,
+       // phone in column A (next to your current numbers). Never edits existing rows.
        var ss = SpreadsheetApp.getActiveSpreadsheet();
-       var sheet = ss.getSheetByName('Subscribers') || ss.insertSheet('Subscribers');
-       if (sheet.getLastRow() === 0) {
-         sheet.appendRow(['Date', 'Phone', 'Phone (digits)', 'Source']);
-       }
+       var sheet = ss.getSheets()[0]; // first tab. To target a specific tab:
+                                       // var sheet = ss.getSheetByName('Sheet1');
        sheet.appendRow([
-         data.ts ? new Date(data.ts * 1000) : new Date(),
-         data.phone || '',
-         data.phone_digits || '',
-         data.source || ''
+         data.phone || '',                                  // A: 17133848985
+         data.source || '',                                 // B: source page (optional)
+         data.ts ? new Date(data.ts * 1000) : new Date()    // C: date added (optional)
        ]);
        return ContentService
          .createTextOutput(JSON.stringify({ ok: true }))
@@ -35,6 +34,11 @@ Worker formats the phone (E.164) + de-dupes, then appends the row to your sheet.
      }
    }
    ```
+   This **adds to your existing list** — each new sign-up is appended as a new
+   row with the phone in **column A** (right where your current numbers are).
+   It never overwrites existing rows. If you only want the phone (no source/date
+   columns), change the `appendRow([...])` to just `[data.phone || '']`. If your
+   numbers live on a different tab, switch to `ss.getSheetByName('YourTabName')`.
 
 4. **Deploy.** Click **Deploy → New deployment** → type **Web app**.
    - **Execute as:** Me
@@ -48,10 +52,12 @@ Worker formats the phone (E.164) + de-dupes, then appends the row to your sheet.
    in the **Subscribers** tab within a second or two.
 
 ## What gets written
-Each new sign-up appends one row: **Date · Phone (E.164, e.g. +19365551234) ·
-Phone digits · Source page**. Duplicates are not re-added (the Worker de-dupes
-by number). If `SHEET_WEBHOOK_URL` is unset, numbers still save to the Worker's
-KV store so nothing is lost.
+Each new sign-up appends one row to your existing sheet: **Phone (column A,
+formatted as `17133848985` — country code 1 + 10 digits, no `+`) · Source page
+(B) · Date (C)**. The Worker formats every number to that 11-digit form before
+it's written, and de-dupes by number so the same phone isn't added twice. If
+`SHEET_WEBHOOK_URL` is unset, numbers still save to the Worker's KV store so
+nothing is lost.
 
 ## Updating the script later
 If you change the Apps Script, **Deploy → Manage deployments → Edit → New

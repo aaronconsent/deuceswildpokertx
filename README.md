@@ -69,9 +69,10 @@ Secrets → Add** → name `ADMIN_PASSWORD`, type **Secret**, value = the shared
 password. (Don't put this in `wrangler.jsonc`.)
 
 ### 3b. SMS opt-in → Google Sheet (direct, no Make.com)  *(Prompt 7)*
-The Text Club opt-in forms POST to `/api/sms-optin`, which normalizes the phone
-to E.164, de-dupes via KV, and **writes new sign-ups straight to a Google Sheet**
-via a tiny Google Apps Script Web App.
+The Text Club opt-in forms POST to `/api/sms-optin`, which formats the phone to
+11-digit US form (`17133848985` — country code + 10 digits, no `+`), de-dupes
+via KV, and **appends new sign-ups straight to your existing Google Sheet**
+(column A) via a tiny Google Apps Script Web App.
 - Full 3-minute setup (paste-in script + deploy) is in **`GOOGLE-SHEET-SETUP.md`**.
 - Then Worker → **Settings → Variables and Secrets** → add **`SHEET_WEBHOOK_URL`**
   = the Apps Script Web app URL (`https://script.google.com/macros/s/…/exec`).
