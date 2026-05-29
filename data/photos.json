@@ -1,9 +1,19 @@
 {
-  "_comment": "Photo manifest. Drop files in /assets/img/ and list them here; empty groups/portraits keep the branded placeholders (no broken images). See /PHOTO-SHOOT-LIST.md.",
+  "_comment": "Photo manifest. Real photos reused from the original Durable site (genuine room/club shots — no stock). Add more by dropping files in /assets/img/ and listing them here. Empty groups/portraits keep branded placeholders. See /PHOTO-SHOOT-LIST.md.",
   "base": "/assets/img/",
   "groups": {
-    "home": [],
-    "room": []
+    "home": [
+      { "file": "room-and-neon.png", "alt": "Players at the tables under the Deuces Wild Poker neon sign in Huntsville, TX" },
+      { "file": "table-chips.png", "alt": "A Texas Hold'em hand in progress — chips and cards on the green felt" },
+      { "file": "room-tables.png", "alt": "The Deuces Wild poker room with players seated at several tables" },
+      { "file": "table-action.png", "alt": "Players in the middle of a hand at Deuces Wild Poker Club" }
+    ],
+    "room": [
+      { "file": "tournament-room.png", "alt": "A tournament table at Deuces Wild Poker Club" },
+      { "file": "private-room.png", "alt": "A private poker room with a full table and screens at Deuces Wild" },
+      { "file": "room-tables.png", "alt": "Inside the Deuces Wild poker room in Huntsville, TX" },
+      { "file": "table-chips.png", "alt": "Chips and cards on the felt during a hand at Deuces Wild" }
+    ]
   },
   "portraits": {
     "mike": "",

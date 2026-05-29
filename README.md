@@ -35,11 +35,11 @@ and set the `ADMIN_PASSWORD` secret — see **Cloudflare setup** below.
 - **Phone number:** every page uses the placeholder `(936) 000-0000` /
   `tel:+19360000000` and the schema uses `+1-936-000-0000`. Find-and-replace the
   real number across the repo (search `9360000000` and `(936) 000-0000`).
-- **OG image:** add `/assets/og-default.jpg` (1200×630 felt-and-gold card).
+- **OG image:** add `/assets/og-default.png` (1200×630 felt-and-gold card).
 - **Photos:** drop real images into `/assets/img/` and list them in
   `/data/photos.json` — they appear automatically (branded placeholders show
   until then, no broken images). Full shot list + filenames: **`/PHOTO-SHOOT-LIST.md`**.
-  Also add `/assets/og-default.jpg` (1200×630) for social-share previews.
+  Also add `/assets/og-default.png` (1200×630) for social-share previews.
 - Set the `ADMIN_PASSWORD` secret and create the D1 + KV bindings (below).
 
 ---

@@ -48,10 +48,10 @@ Used on /about/mike-ike/ (and great for /about/). Real faces = trust.
 | `mike.jpg` | Mike — friendly, approachable portrait. Vertical (4:5) framing works best. |
 | `ike.jpg` | Ike — same treatment, matching style. |
 
-### Social / OG image — `og-default.jpg`
+### Social / OG image — `og-default.png`
 The preview image when the site is shared (texts, Facebook, etc.).
-- **Exact size: 1200 × 630 px.** Save as `/assets/og-default.jpg`.
-- Suggestion: the neon sign or room-wide shot, darkened, with "DEUCES WILD POKER CLUB · Huntsville, TX · Rake-Free" in gold. (Already referenced sitewide as the og:image — just drop the file in.)
+- **Currently set** to the real room-and-neon photo (reused from the original site) — already live as `/assets/og-default.png` and referenced sitewide.
+- **Optional upgrade:** replace with a purpose-built **1200 × 630 px** card — the neon/room shot, darkened, with "DEUCES WILD POKER CLUB · Huntsville, TX · Rake-Free" in gold. Just overwrite `/assets/og-default.png`.
 
 ### Winners wall (optional, later)
 Winner photos go in `/data/winners.json` per entry (`"photo": "/assets/img/winner-name.jpg"`), only with the player's permission.
