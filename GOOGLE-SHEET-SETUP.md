@@ -14,24 +14,48 @@ Worker formats the phone (E.164) + de-dupes, then appends the row to your sheet.
    function doPost(e) {
      try {
        var data = JSON.parse(e.postData.contents);
-       // Appends to the existing first tab (Sheet1: phone | name | invited).
-       // Web sign-ups only have a phone, so it goes in column A; name & invited
-       // are left blank. New row added at the bottom; existing rows untouched.
-       var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-       sheet.appendRow([ data.phone || '' ]); // A: 17133848985  (B name / C invited blank)
-       return ContentService
-         .createTextOutput(JSON.stringify({ ok: true }))
-         .setMimeType(ContentService.MimeType.JSON);
+       var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0]; // Sheet1
+       var incoming = normPhone_(data.phone);
+
+       // De-dupe against the SHEET (column A) so numbers you added by hand count
+       // too. Matches on the last 10 digits, ignoring formatting differences.
+       if (incoming) {
+         var last = sheet.getLastRow();
+         if (last >= 1) {
+           var colA = sheet.getRange(1, 1, last, 1).getValues();
+           for (var i = 0; i < colA.length; i++) {
+             if (normPhone_(colA[i][0]) === incoming) {
+               return out_({ ok: true, duplicate: true }); // already in the sheet
+             }
+           }
+         }
+       }
+
+       // New number -> append below the existing list. Phone in column A;
+       // name & invited left blank (the web form only collects a number).
+       sheet.appendRow([ data.phone || '' ]);
+       return out_({ ok: true });
      } catch (err) {
-       return ContentService
-         .createTextOutput(JSON.stringify({ ok: false, error: String(err) }))
-         .setMimeType(ContentService.MimeType.JSON);
+       return out_({ ok: false, error: String(err) });
      }
+   }
+
+   // Reduce any phone format to its last 10 digits for comparison.
+   function normPhone_(v) {
+     var d = String(v || '').replace(/\D/g, '');
+     return d.length >= 10 ? d.slice(-10) : '';
+   }
+
+   function out_(o) {
+     return ContentService.createTextOutput(JSON.stringify(o))
+       .setMimeType(ContentService.MimeType.JSON);
    }
    ```
    This **adds to your existing list** (Sheet1, below the current 37 contacts) —
    the phone lands in **column A** (your `phone` column); `name` and `invited`
-   stay blank because the web form only collects a number. Existing rows are
+   stay blank because the web form only collects a number. **Before adding, it
+   scans column A and skips the number if it's already there** — including ones
+   you typed in manually — so you never get a duplicate row. Existing rows are
    never touched. (Want web sign-ups to capture a name too? I can add a name
    field to the opt-in form.)
 
