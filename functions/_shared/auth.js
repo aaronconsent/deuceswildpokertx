@@ -17,11 +17,21 @@ function getCookie(request, name) {
   return m ? decodeURIComponent(m[1]) : null;
 }
 
+// The expected cookie token (a SHA-256 hex). Sourced from either:
+//  - ADMIN_PW_SHA256  : the hashed password, safe to store in wrangler.jsonc, or
+//  - ADMIN_PASSWORD   : a plaintext dashboard secret (if it ever binds).
+// ADMIN_PW_SHA256 must equal sha256("dwp::<password>::v1").
+async function expectedToken(env) {
+  if (env.ADMIN_PW_SHA256) return env.ADMIN_PW_SHA256.trim().toLowerCase();
+  if (env.ADMIN_PASSWORD) return await tokenFor(env.ADMIN_PASSWORD);
+  return null;
+}
+
 async function isAuthed(request, env) {
-  if (!env.ADMIN_PASSWORD) return false;
+  const expected = await expectedToken(env);
+  if (!expected) return false;
   const tok = getCookie(request, COOKIE);
-  if (!tok) return false;
-  return tok === await tokenFor(env.ADMIN_PASSWORD);
+  return !!tok && tok === expected;
 }
 
 function sessionCookie(token) {
@@ -32,4 +42,4 @@ function clearCookie() {
   return `${COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`;
 }
 
-export { COOKIE, tokenFor, getCookie, isAuthed, sessionCookie, clearCookie };
+export { COOKIE, tokenFor, getCookie, isAuthed, expectedToken, sessionCookie, clearCookie };
