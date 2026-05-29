@@ -68,6 +68,20 @@ Dashboard → your Worker (**deuceswildpokertx**) → **Settings → Variables a
 Secrets → Add** → name `ADMIN_PASSWORD`, type **Secret**, value = the shared host
 password. (Don't put this in `wrangler.jsonc`.)
 
+### 3b. SMS opt-in → Google Sheet (Make.com)  *(Prompt 7)*
+The Text Club opt-in forms POST to `/api/sms-optin`, which normalizes the phone
+to E.164, de-dupes via KV, and **forwards new sign-ups to your Make.com webhook**
+(which appends them to your Google Spreadsheet).
+- Worker → **Settings → Variables and Secrets** → add **`SMS_WEBHOOK_URL`** =
+  your Make.com custom-webhook URL (the scenario that writes to the sheet).
+- The webhook receives this JSON — map the fields to your sheet columns in Make:
+  ```json
+  { "phone": "+19365551234", "phone_digits": "9365551234",
+    "source": "/text-club/", "consented_at": "2026-05-28T01:23:45.000Z", "ts": 1780000000 }
+  ```
+- If `SMS_WEBHOOK_URL` is unset, sign-ups still save to KV (no data lost); they
+  just aren't piped to the sheet until you add it. Duplicates are not re-sent.
+
 ### 4. Deploy
 Commit + push `worker.js`, `wrangler.jsonc`, and the rest. Cloudflare's Workers
 build picks up the bindings from `wrangler.jsonc`. Once live:
