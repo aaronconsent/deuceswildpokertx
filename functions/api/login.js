@@ -20,5 +20,11 @@ export async function onRequestPost({ request, env }) {
 }
 
 export async function onRequestGet({ request, env }) {
-  return json({ authed: await isAuthed(request, env) });
+  // Diagnostic: reports ONLY whether the secret is bound (never its value) +
+  // which bindings the Worker can see. Visit /api/login to check config.
+  return json({
+    authed: await isAuthed(request, env),
+    configured: !!env.ADMIN_PASSWORD,
+    bindings: { DB: !!env.DB, STATUS: !!env.STATUS, SHEET_WEBHOOK_URL: !!env.SHEET_WEBHOOK_URL },
+  });
 }
