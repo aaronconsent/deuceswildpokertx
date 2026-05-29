@@ -3,19 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact &amp; Directions | Deuces Wild Poker Club</title>
-<meta name="description" content="Call or text Deuces Wild Poker Club, get directions to 120 FM 2821 Rd E, Huntsville, TX, and see our hours. Walk-ins welcome Wed–Sat.">
-<link rel="canonical" href="https://deuceswildpokertx.com/contact/">
+<title>Recent Winners &amp; High Hands | Deuces Wild Poker</title>
+<meta name="description" content="Recent tournament winners and high-hand bonuses at Deuces Wild Poker Club in Huntsville, TX. Come make the wall — walk in Wednesday through Saturday.">
+<link rel="canonical" href="https://deuceswildpokertx.com/winners/">
 <meta name="theme-color" content="#0a0a0a">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Deuces Wild Poker Club">
-<meta property="og:title" content="Contact & Directions | Deuces Wild Poker Club">
-<meta property="og:description" content="Call or text us, get directions, and see our hours. Walk-ins welcome Wed–Sat.">
-<meta property="og:url" content="https://deuceswildpokertx.com/contact/">
+<meta property="og:title" content="Recent Winners & High Hands | Deuces Wild Poker">
+<meta property="og:description" content="Recent tournament winners and high-hand bonuses at Deuces Wild Poker Club in Huntsville, TX.">
+<meta property="og:url" content="https://deuceswildpokertx.com/winners/">
 <meta property="og:image" content="https://deuceswildpokertx.com/assets/og-default.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/styles.css">
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
@@ -24,24 +22,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
  {"@type":"ListItem","position":1,"name":"Home","item":"https://deuceswildpokertx.com/"},
- {"@type":"ListItem","position":2,"name":"Contact","item":"https://deuceswildpokertx.com/contact/"}]}
-</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org","@type":"EntertainmentBusiness",
-  "@id":"https://deuceswildpokertx.com/#business",
-  "name":"Deuces Wild Poker Club",
-  "url":"https://deuceswildpokertx.com/",
-  "telephone":"+1-936-000-0000",
-  "image":"https://deuceswildpokertx.com/assets/og-default.jpg",
-  "address":{"@type":"PostalAddress","streetAddress":"120 FM 2821 Rd E","addressLocality":"Huntsville","addressRegion":"TX","postalCode":"77320","addressCountry":"US"},
-  "geo":{"@type":"GeoCoordinates","latitude":30.7589,"longitude":-95.5180},
-  "openingHoursSpecification":[
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Thursday","Friday"],"opens":"19:00","closes":"02:00"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"18:00","closes":"02:00"}
-  ],
-  "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
-}
+ {"@type":"ListItem","position":2,"name":"Winners","item":"https://deuceswildpokertx.com/winners/"}]}
 </script>
 </head>
 <body>
@@ -59,7 +40,7 @@
     <nav aria-label="Primary"><ul class="nav-links">
       <li><a href="/">Home</a></li><li><a href="/first-visit/">First Visit</a></li><li><a href="/tournaments/">Tournaments</a></li>
       <li><a href="/cash-games/">Cash Games</a></li><li><a href="/why-deuces-wild/">Why Drive Here</a></li>
-      <li><a href="/about/">About</a></li><li><a class="active" href="/contact/">Contact</a></li>
+      <li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li>
     </ul></nav>
     <div class="nav-cta">
       <a class="nav-phone" href="tel:+19360000000" aria-label="Call Deuces Wild Poker Club">
@@ -80,69 +61,59 @@
 </header>
 <!-- PARTIAL: nav.html END -->
 
-<main id="main">
+<main id="main" x-data="winners()" x-init="load()">
   <section class="hero"><div class="wrap">
-    <p class="eyebrow">Contact &amp; Directions</p>
-    <h1>Come See Us <span class="gold">In Huntsville</span></h1>
-    <p class="lead">Questions before you visit? Call or text — a real person will answer. Or just walk in any night we're open; no reservation needed.</p>
+    <p class="eyebrow">Social Proof</p>
+    <h1>Recent <span class="gold">Winners</span> &amp; High Hands</h1>
+    <p class="lead">Real results from real nights at the table. Tournament champions and high-hand bonuses — come put your name up here.</p>
+    <div class="cta-row mt-3">
+      <a class="btn btn-gold btn-lg" href="/tournaments/">This Week's Tournaments</a>
+      <a class="btn btn-ghost" href="/first-visit/">Plan Your First Visit</a>
+    </div>
   </div></section>
 
+  <!-- NAMED WINNERS (editable /data/winners.json) -->
   <section class="section-panel"><div class="wrap">
-    <div class="grid grid-2" style="gap:2rem;align-items:start">
-      <div class="card">
-        <h3>The Club</h3>
-        <p class="mono">
-          <a href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">120 FM 2821 Rd E<br>Huntsville, TX 77320</a>
-        </p>
-        <h3 class="mt-3">Call or Text</h3>
-        <p class="mono"><a href="tel:+19360000000">(936) 000-0000</a><br><span class="muted">Tap to call or text on mobile</span></p>
-        <h3 class="mt-3">Hours</h3>
-        <p class="mono">Wed · Thu · Fri — 7:00 PM to Last Hand<br>Sat — 6:00 PM to Last Hand<br>Tournaments: Wed 7 PM · Sat 6 PM</p>
-        <div class="cta-row mt-3">
-          <a class="btn btn-gold" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
-          <a class="btn btn-ghost" href="/refer/">Bring a Friend</a>
+    <h2 class="center">On the <span class="gold">Wall</span></h2>
+    <div class="grid grid-3 mt-4">
+      <template x-for="win in named" :key="win.name + win.date">
+        <div class="card center">
+          <svg class="suit suit-gold" viewBox="0 0 24 24" style="width:2rem;height:2rem;margin:0 auto"><use href="#suit-spade"/></svg>
+          <h3 class="mt-1" x-text="win.result"></h3>
+          <p style="margin:.2rem 0" x-text="win.name"></p>
+          <p class="muted mono" style="font-size:.85rem" x-text="win.event"></p>
+          <p class="muted mono" style="font-size:.78rem" x-text="win.date"></p>
         </div>
-      </div>
-      <div class="panel" style="padding:0;overflow:hidden">
-        <iframe title="Map to Deuces Wild Poker Club" width="100%" height="420" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320&output=embed"></iframe>
-      </div>
-    </div>
-    <div class="mt-4" style="max-width:520px">
-      <div class="sms-optin" x-data="smsOptin()">
-        <h4 style="margin-top:0">Text <span class="gold">DEUCE</span> for the weekly action</h4>
-        <p class="form-note" style="margin:.25rem 0 .9rem">Schedule, tournament reminders &amp; high-hand alerts. Text STOP anytime.</p>
-        <form @submit.prevent="submit" x-show="!done"><div class="row">
-          <label class="skip-link" for="c-sms">Mobile number</label>
-          <input id="c-sms" type="tel" x-model="phone" placeholder="Your mobile number" autocomplete="tel" required>
-          <button class="btn btn-gold" type="submit" :disabled="busy" x-text="busy?'Sending…':'Sign Up'">Sign Up</button>
-        </div>
-        <input type="text" x-model="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
-        <p class="form-note" style="margin:.6rem 0 0">Recurring automated texts. Msg &amp; data rates may apply. Reply STOP to opt out.</p></form>
-        <div class="status-msg ok" x-show="done" x-cloak x-text="msg"></div>
-        <div class="status-msg err" x-show="err" x-cloak x-text="msg"></div>
-      </div>
+      </template>
+      <template x-if="named.length===0">
+        <p class="muted center">Winners get posted here after each tournament. <a href="/tournaments/">Come make the wall →</a></p>
+      </template>
     </div>
   </div></section>
 
-  <!-- GENERAL QUESTIONS FORM -->
-  <section class="section-dark"><div class="wrap-narrow">
-    <p class="eyebrow">Ask Us Anything</p>
-    <h2>Send us a question</h2>
-    <p class="muted">Prefer to type it out? Send a note and we'll get back to you. For the fastest answer, <a href="tel:+19360000000">call or text (936) 000-0000</a> — a real person (often Mike or Ike) will reply.</p>
-    <div class="panel mt-2" x-data="contactForm()">
-      <form @submit.prevent="submit" x-show="!done" style="display:grid;gap:1rem">
-        <div class="field"><label for="cf-name">Your name *</label><input id="cf-name" type="text" x-model="name" autocomplete="name" required></div>
-        <div class="grid grid-2" style="gap:1rem">
-          <div class="field"><label for="cf-phone">Phone</label><input id="cf-phone" type="tel" x-model="phone" autocomplete="tel"></div>
-          <div class="field"><label for="cf-email">Email</label><input id="cf-email" type="email" x-model="email" autocomplete="email"></div>
-        </div>
-        <div class="field"><label for="cf-msg">Your question *</label><textarea id="cf-msg" rows="4" x-model="message" required></textarea></div>
-        <input type="text" x-model="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
-        <p class="form-note" style="margin:0">Add a phone or email so we can reply. We'll never share your info.</p>
-        <button class="btn btn-gold" type="submit" :disabled="busy" x-text="busy?'Sending…':'Send Question'">Send Question</button>
-      </form>
-      <div class="status-msg ok" x-show="done" x-cloak x-text="msg"></div>
-      <div class="status-msg err" x-show="err" x-cloak x-text="msg"></div>
+  <!-- RECENT TOURNAMENT ACTIVITY (anonymous, from D1 /api/winners) -->
+  <section class="section-dark" x-show="activity.length>0 || count30>0" x-cloak><div class="wrap-narrow">
+    <p class="eyebrow center">Live From the Database</p>
+    <h2 class="center"><span class="gold" x-text="count30"></span> tournaments in the last 30 days</h2>
+    <p class="center muted">A champion crowned at every one. Most recent finishes:</p>
+    <table class="struct mt-3" x-show="activity.length>0">
+      <thead><tr><th>Date</th><th>Game</th><th>Entries</th></tr></thead>
+      <tbody>
+        <template x-for="t in activity" :key="t.date + t.table_number">
+          <tr><td class="num" x-text="fmt(t.date)"></td><td>Hold'em Tournament · Table <span x-text="t.table_number"></span></td><td class="num" x-text="t.entries"></td></tr>
+        </template>
+      </tbody>
+    </table>
+    <p class="form-note center mt-2">Winners play anonymously — names go on the wall above only with the player's OK.</p>
+  </div></section>
+
+  <!-- CTA -->
+  <section class="section-panel"><div class="wrap center">
+    <h2>Your turn</h2>
+    <p class="lead">$60 buy-in tournaments Wednesday at 7 and Saturday at 6. Walk in — no reservation needed.</p>
+    <div class="cta-row jcc mt-3">
+      <a class="btn btn-gold btn-lg" href="/tournaments/">See the Structure</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
     </div>
   </div></section>
 </main>
@@ -180,12 +151,13 @@ function smsOptin(){return{phone:'',hp:'',busy:false,done:false,err:false,msg:''
       const d=await r.json().catch(()=>({})); if(r.ok&&d.ok){this.done=true;this.msg="You're on the list. See you at the table.";}
       else{this.err=true;this.msg=d.error||'Something went wrong — please try again or call us.';}}
     catch(e){this.err=true;this.msg='Network error — please try again.';} finally{this.busy=false;} }};}
-function contactForm(){return{name:'',phone:'',email:'',message:'',hp:'',busy:false,done:false,err:false,msg:'',
-  async submit(){ if(this.hp)return; this.busy=true; this.err=false;
-    try{ const r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:this.name,phone:this.phone,email:this.email,message:this.message})});
-      const d=await r.json().catch(()=>({})); if(r.ok&&d.ok){this.done=true;this.msg="Thanks! We got your message and will be in touch.";}
-      else{this.err=true;this.msg=d.error||'Something went wrong — please call or text us instead.';}}
-    catch(e){this.err=true;this.msg='Network error — please try again or call us.';} finally{this.busy=false;} }};}
+function winners(){return{ named:[], activity:[], count30:0,
+  async load(){
+    try{ const d=await fetch('/data/winners.json').then(r=>r.json()); this.named=(d.winners||[]); }catch(e){}
+    try{ const w=await fetch('/api/winners').then(r=>r.json()); this.activity=(w.tournaments||[]); this.count30=w.count_30d||0; }catch(e){}
+  },
+  fmt(ts){ const d=new Date(ts*1000); return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}); }
+};}
 </script>
 <!-- PARTIAL: script-tail.html START -->
 <script src="/assets/app.js"></script>

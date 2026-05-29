@@ -2,7 +2,7 @@
 // requires a valid admin cookie (scan, session/*, checkin, checkout, admin/*).
 import { isAuthed } from '../_shared/auth.js';
 
-const PUBLIC = new Set(['/api/sessions', '/api/sms-optin', '/api/refer', '/api/login']);
+const PUBLIC = new Set(['/api/sessions', '/api/sms-optin', '/api/refer', '/api/login', '/api/winners', '/api/contact']);
 
 export async function onRequest(context) {
   const { request, next, env } = context;

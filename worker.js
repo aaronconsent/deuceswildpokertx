@@ -26,9 +26,11 @@ import { onRequestGet as statusGet, onRequestPost as statusPost } from './functi
 import { onRequestGet as loginGet, onRequestPost as loginPost } from './functions/api/login.js';
 import { onRequestPost as smsPost } from './functions/api/sms-optin.js';
 import { onRequestPost as referPost } from './functions/api/refer.js';
+import { onRequestGet as winnersGet } from './functions/api/winners.js';
+import { onRequestPost as contactPost } from './functions/api/contact.js';
 
 // API paths that do NOT require admin auth.
-const PUBLIC_API = new Set(['/api/sessions', '/api/sms-optin', '/api/refer', '/api/login']);
+const PUBLIC_API = new Set(['/api/sessions', '/api/sms-optin', '/api/refer', '/api/login', '/api/winners', '/api/contact']);
 
 const jsonErr = (msg, status) =>
   new Response(JSON.stringify({ error: msg }), { status, headers: { 'Content-Type': 'application/json' } });
@@ -49,6 +51,8 @@ const ROUTES = {
   'POST /api/login': loginPost,
   'POST /api/sms-optin': smsPost,
   'POST /api/refer': referPost,
+  'GET /api/winners': winnersGet,
+  'POST /api/contact': contactPost,
 };
 
 export default {
