@@ -22,9 +22,15 @@ export async function onRequestPost({ request, env }) {
 export async function onRequestGet({ request, env }) {
   // Diagnostic: reports ONLY whether the secret is bound (never its value) +
   // which bindings the Worker can see. Visit /api/login to check config.
+  // envKeys = the NAMES of bindings/vars the Worker can see at runtime (no
+  // values). If ADMIN_PASSWORD / SHEET_WEBHOOK_URL aren't listed, they're set
+  // in the wrong place (e.g. Build vars, or Preview env) — not runtime vars.
+  let envKeys = [];
+  try { envKeys = Object.keys(env).sort(); } catch (e) {}
   return json({
     authed: await isAuthed(request, env),
     configured: !!env.ADMIN_PASSWORD,
     bindings: { DB: !!env.DB, STATUS: !!env.STATUS, SHEET_WEBHOOK_URL: !!env.SHEET_WEBHOOK_URL },
+    envKeys,
   });
 }
