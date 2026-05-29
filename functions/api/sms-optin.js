@@ -1,9 +1,9 @@
 // POST /api/sms-optin  (PUBLIC)   { phone, source }
 // SMS Text Club opt-in. Normalizes the phone to E.164, keeps a KV backup (and
-// de-dupes), then forwards NEW sign-ups to the Make.com webhook (env
-// SMS_WEBHOOK_URL) which appends them to the Google Spreadsheet.
+// de-dupes), then writes NEW sign-ups straight to the Google Sheet via a Google
+// Apps Script Web App (env SHEET_WEBHOOK_URL). No Make.com / third party.
 //
-// Make scenario receives this JSON (map these to sheet columns):
+// The Apps Script receives this JSON and appends a row (see GOOGLE-SHEET-SETUP.md):
 //   { phone: "+19365551234", phone_digits: "9365551234",
 //     source: "/text-club/", consented_at: "2026-05-28T...Z", ts: 1780000000 }
 import { json, now } from '../_shared/db.js';
@@ -35,11 +35,11 @@ export async function onRequestPost({ request, env }) {
     } catch (e) { /* fall through to webhook */ }
   }
 
-  // 2) Forward NEW numbers to Make.com -> Google Sheet. (Skip if it's a known
-  //    duplicate, so the sheet doesn't get repeat rows.)
-  if (!dedup && env.SMS_WEBHOOK_URL) {
+  // 2) Write NEW numbers straight to the Google Sheet (Apps Script Web App).
+  //    Skip known duplicates so the sheet doesn't get repeat rows.
+  if (!dedup && env.SHEET_WEBHOOK_URL) {
     try {
-      const r = await fetch(env.SMS_WEBHOOK_URL, {
+      const r = await fetch(env.SHEET_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
