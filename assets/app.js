@@ -148,6 +148,44 @@
     };
   };
 
+  // Manifest-driven photo carousel. Reads /data/photos.json; renders real
+  // images for the named group, or N branded placeholders if none yet.
+  window.photoGallery = function (group) {
+    return {
+      slides: [], n: 1, i: 0, base: '/assets/img/',
+      async init() {
+        let photos = [], count = 4;
+        try {
+          const d = await fetch('/data/photos.json').then(r => r.json());
+          this.base = d.base || this.base;
+          photos = ((d.groups && d.groups[group]) || []).filter(p => p && p.file);
+          count = (d.placeholders && d.placeholders[group]) || 4;
+        } catch (e) {}
+        this.slides = photos.length
+          ? photos.map(p => ({ img: this.base + p.file, alt: p.alt || 'Inside Deuces Wild Poker Club' }))
+          : Array.from({ length: count }, (_, k) => ({ placeholder: k + 1, total: count }));
+        this.n = this.slides.length;
+      },
+      prev() { this.i = (this.i - 1 + this.n) % this.n; },
+      next() { this.i = (this.i + 1) % this.n; },
+    };
+  };
+
+  // Single owner portrait. Reads /data/photos.json portraits[name]; shows the
+  // image if present, otherwise leaves the branded placeholder visible.
+  window.portrait = function (name) {
+    return {
+      src: '', alt: '',
+      async init() {
+        try {
+          const d = await fetch('/data/photos.json').then(r => r.json());
+          const f = d.portraits && d.portraits[name];
+          if (f) this.src = (d.base || '/assets/img/') + f;
+        } catch (e) {}
+      },
+    };
+  };
+
   // Standalone countdown to next tournament (used on /tournaments/).
   window.tourCountdown = function () {
     return {

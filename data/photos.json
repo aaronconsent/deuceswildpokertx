@@ -1,0 +1,16 @@
+{
+  "_comment": "Photo manifest. Drop files in /assets/img/ and list them here; empty groups/portraits keep the branded placeholders (no broken images). See /PHOTO-SHOOT-LIST.md.",
+  "base": "/assets/img/",
+  "groups": {
+    "home": [],
+    "room": []
+  },
+  "portraits": {
+    "mike": "",
+    "ike": ""
+  },
+  "placeholders": {
+    "home": 4,
+    "room": 4
+  }
+}

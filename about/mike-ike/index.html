@@ -82,9 +82,10 @@
   <!-- MIKE -->
   <section class="section-dark"><div class="wrap">
     <div class="grid grid-2" style="gap:2rem;align-items:center">
-      <div class="panel" style="padding:0;overflow:hidden;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#141414,#1c1c1c)">
-        <!-- TODO (Prompt 5 photos): replace with a real portrait of Mike. -->
-        <span class="muted mono">PHOTO — MIKE</span>
+      <div class="panel" style="padding:0;overflow:hidden;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#141414,#1c1c1c)" x-data="portrait('mike')" x-init="init()">
+        <!-- Drop /assets/img/mike.jpg and set portraits.mike in /data/photos.json -->
+        <img x-show="src" x-cloak :src="src" alt="Mike, co-owner of Deuces Wild Poker Club" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+        <span x-show="!src" class="muted mono">PHOTO — MIKE</span>
       </div>
       <div>
         <p class="eyebrow">Co-Owner</p>
@@ -107,9 +108,10 @@
         <p>Ike is the other half of the operation. <span class="muted">[Bio to come: his background, his role, what he wants every new player to know. A specific, human detail here builds more trust than any sales pitch.]</span></p>
         <p>If you've got a question before you come in, Ike's happy to answer it — <a href="tel:+19360000000">call or text the club</a>.</p>
       </div>
-      <div class="panel" style="padding:0;overflow:hidden;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#141414,#1c1c1c)">
-        <!-- TODO (Prompt 5 photos): replace with a real portrait of Ike. -->
-        <span class="muted mono">PHOTO — IKE</span>
+      <div class="panel" style="padding:0;overflow:hidden;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#141414,#1c1c1c)" x-data="portrait('ike')" x-init="init()">
+        <!-- Drop /assets/img/ike.jpg and set portraits.ike in /data/photos.json -->
+        <img x-show="src" x-cloak :src="src" alt="Ike, co-owner of Deuces Wild Poker Club" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+        <span x-show="!src" class="muted mono">PHOTO — IKE</span>
       </div>
     </div>
   </div></section>
