@@ -98,7 +98,7 @@ there is no player record and **no PII** anywhere in the seat-tracking data.
 
 ---
 
-## How Mike & Terry use it (operator guide)
+## How Mike & Ike use it (operator guide)
 
 1. On a phone or tablet at the host stand, go to **`/admin/checkin.html`** and log
    in once with the club password.

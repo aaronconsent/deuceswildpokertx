@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS seat_checkins (
   FOREIGN KEY (seat_qr)    REFERENCES seats_config(qr_token)
 );
 
--- Referral leads (the only place /refer/ writes; reviewed by Mike & Terry).
+-- Referral leads (the only place /refer/ writes; reviewed by Mike & Ike).
 CREATE TABLE IF NOT EXISTS referrals (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,
   referrer_name TEXT NOT NULL,

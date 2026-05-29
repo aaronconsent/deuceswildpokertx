@@ -1,5 +1,5 @@
 // POST /api/refer  (PUBLIC)  { referrer_name, friend_name, friend_phone }
-// Logs a referral lead to D1 (referrals table) for Mike & Terry to follow up
+// Logs a referral lead to D1 (referrals table) for Mike & Ike to follow up
 // and credit both players at the door.
 import { json, now } from '../_shared/db.js';
 
