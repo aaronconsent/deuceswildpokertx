@@ -9,6 +9,11 @@
   "compatibility_flags": ["nodejs_compat"],
   "observability": { "enabled": true },
 
+  // Preserve Variables/Secrets set in the Cloudflare dashboard (ADMIN_PASSWORD,
+  // SHEET_WEBHOOK_URL) across CI `wrangler deploy` builds. Without this, deploys
+  // strip dashboard vars that aren't listed in this file.
+  "keep_vars": true,
+
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
