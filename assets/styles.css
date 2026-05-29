@@ -173,6 +173,8 @@ section { padding: var(--s-8) 0; }
 .hamburger { display: inline-flex; background: none; border: 1px solid var(--line); border-radius: 8px; padding: .5rem .6rem; cursor: pointer; color: var(--cream); }
 .hamburger svg { width: 22px; height: 22px; }
 @media (min-width: 980px){ .nav-links{display:flex;} .hamburger{display:none;} }
+/* On small screens collapse the header phone to a tappable icon so the menu button always fits */
+@media (max-width: 560px){ .np-text{ display:none; } .nav-phone{ padding:.35rem; } .brand{ font-size:1.45rem; } }
 
 /* mobile drawer */
 .drawer { position: fixed; inset: 0; z-index: 60; }
