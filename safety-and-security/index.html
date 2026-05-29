@@ -28,7 +28,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
  {"@type":"Question","name":"Is it safe to play at Deuces Wild?","acceptedAnswer":{"@type":"Answer","text":"Yes. We're a legal private club with security cameras, a secure cage for cash, professional dealers, and known regulars — not an underground game. The owners, Mike and Ike, are on-site most nights."}},
- {"@type":"Question","name":"How is my money handled?","acceptedAnswer":{"@type":"Answer","text":"Cash is handled through a secure cage with clear procedures. Because we are rake-free, the house never has a stake in any pot — players play against each other only."}},
+ {"@type":"Question","name":"How is my money handled?","acceptedAnswer":{"@type":"Answer","text":"Cash is handled through a secure cage with clear procedures. Professional dealers run every table, named local owners are on-site, and cameras are throughout — your money is handled the way a real card room handles it."}},
  {"@type":"Question","name":"How is this different from an underground game?","acceptedAnswer":{"@type":"Answer","text":"A real card room operates legally under Texas Penal Code Section 47.02, with cameras, a secure cage, professional dealers, named local owners, and a consistent crowd of regulars. Underground games have none of those protections."}},
  {"@type":"Question","name":"Who is actually in the room?","acceptedAnswer":{"@type":"Answer","text":"Mostly regulars from Huntsville and the surrounding towns, plus new players who walked in to try it. The owners know the room, and professional dealers run every table."}}
 ]}
@@ -91,7 +91,7 @@
       <div class="card"><h3>A Secure Cage</h3><p>Cash is handled through a secure cage with clear procedures — not loose on a kitchen table. Buy-ins, payouts, and chips run through one controlled point.</p></div>
       <div class="card"><h3>Professional Dealers</h3><p>Every table is run by a professional dealer following proper procedure. No self-dealing, no "trust me" — just clean, consistent games.
         <!-- TODO (owner input): dealer training/source if you want to name it. --></p></div>
-      <div class="card"><h3>Rake-Free = No House Stake</h3><p>Because we take no rake, the house has zero financial interest in who wins a pot. You're playing the other players, never the room. <a href="/why-deuces-wild/">More on that →</a></p></div>
+      <div class="card"><h3>No Gimmicks</h3><p>Transparent tournament structure, clear stakes, walk-ins always welcome. What you read here is what you'll find at the door. <a href="/why-deuces-wild/">Why the drive is worth it →</a></p></div>
     </div>
   </div></section>
 
@@ -113,7 +113,7 @@
         <tr><td>Secure cash cage</td><td class="num">Yes</td><td class="num">No</td></tr>
         <tr><td>Professional dealers</td><td class="num">Yes</td><td class="num">Rarely</td></tr>
         <tr><td>Named, accountable owners</td><td class="num">Mike &amp; Ike</td><td class="num">"A guy"</td></tr>
-        <tr><td>House takes a cut</td><td class="num">Never (rake-free)</td><td class="num">Often</td></tr>
+        <tr><td>Transparent structure</td><td class="num">Yes</td><td class="num">"Trust me"</td></tr>
         <tr><td>Consistent regulars</td><td class="num">Yes</td><td class="num">Who knows</td></tr>
       </tbody>
     </table>
@@ -131,7 +131,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>How is my money handled?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
-        <div class="faq-a" x-show="open===2" x-collapse>Through a secure cage with clear procedures. And because we're <strong>rake-free</strong>, the house never has a stake in any pot — you only ever play the other players.</div>
+        <div class="faq-a" x-show="open===2" x-collapse>Through a secure cage with clear procedures. Professional dealers run every table, named local owners are on-site, and cameras are throughout — your money is handled the way a real card room handles it.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Is it legal?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
@@ -156,7 +156,7 @@
   </div>
   <div class="footer-grid">
     <div><h4>Deuces Wild Poker Club</h4>
-      <p class="muted" style="margin-bottom:.6rem">Huntsville's rake-free, locally owned private poker club. Walk in any night we're open — no membership required to come check it out.</p>
+      <p class="muted" style="margin-bottom:.6rem">Huntsville's locally owned private poker club — pro dealers, real card room, no gimmicks. Walk in any night we're open — no membership required to come check it out.</p>
       <p class="mono" style="font-size:.95rem;margin:0"><a href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">120 FM 2821 Rd E, Huntsville, TX 77320</a><br><a href="tel:+19360000000">(936) 000-0000</a> · tap to call or text<br>Wed–Fri 7 PM · Sat 6 PM — Last Hand</p></div>
     <div><h4>Visit</h4><ul class="footer-links">
       <li><a href="/first-visit/">Plan Your First Visit</a></li><li><a href="/tournaments/">This Week's Tournaments</a></li><li><a href="/cash-games/">Cash Games</a></li><li><a href="/why-deuces-wild/">Why Drive Here</a></li><li><a href="/is-this-legal/">Is This Legal?</a></li><li><a href="/refer/">Bring a Friend</a></li><li><a href="/contact/">Contact &amp; Directions</a></li>
@@ -170,7 +170,7 @@
     </div></div>
   </div>
   <div class="footer-legal">
-    <span>Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). Rake-free. Locally owned by Mike &amp; Ike. <a href="/is-this-legal/">Read how this works →</a></span>
+    <span>Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). Locally owned by Mike &amp; Ike. <a href="/is-this-legal/">Read how this works →</a></span>
     <span>&copy; <span x-data x-text="new Date().getFullYear()">2026</span> Deuces Wild Poker Club · <a href="/privacy-policy/">Privacy</a></span>
   </div>
 </div></footer>

@@ -1,6 +1,6 @@
 # Deuces Wild Poker Club — deuceswildpokertx.com
 
-Conversion-first static site for a rake-free private poker club in Huntsville, TX.
+Conversion-first static site for a private poker club in Huntsville, TX — pro dealers, real card room, no gimmicks.
 Static HTML + Alpine.js (CDN), **no build step**, deployed on Cloudflare with
 Pages Functions + D1 + KV powering a real-time seat-tracking system.
 

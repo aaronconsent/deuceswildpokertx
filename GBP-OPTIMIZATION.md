@@ -26,7 +26,7 @@ searches that happen on phones. Work this list top to bottom. Manage it at
 
 ## 3. Description (750 chars)
 Lead with what you are + where + the differentiators. Draft:
-> Deuces Wild Poker Club is a legal, rake-free private poker club in Huntsville, Texas, owned and run by Mike & Ike. We spread Texas Hold'em and Omaha cash games four nights a week and run Hold'em tournaments every Wednesday (7 PM) and Saturday (6 PM). No house rake — you keep what you win. Professional dealers, a secure room, and a friendly crowd of regulars from across East Texas. Walk-ins welcome; no membership required to come check it out. Minutes off I-45 near Sam Houston State University.
+> Deuces Wild Poker Club is a legal private poker club in Huntsville, Texas, owned and run by Mike & Ike. Pro dealers, a real card room, no gimmicks. We spread Texas Hold'em and Omaha cash games four nights a week and run Hold'em tournaments every Wednesday (7 PM) and Saturday (6 PM). Professional dealers, a secure room, and a friendly crowd of regulars from across East Texas. Walk-ins welcome; no membership required to come check it out. Minutes off I-45 near Sam Houston State University.
 
 ## 4. Photos (fill EVERY slot — this drives clicks)
 - [ ] **Logo** and **cover** photo.
@@ -39,7 +39,7 @@ Lead with what you are + where + the differentiators. Draft:
 
 ## 5. Attributes
 - [ ] Set every applicable attribute: payments accepted, parking (free lot), accessibility, "LGBTQ+ friendly" if true, etc.
-- [ ] If a "no rake / rake-free" style attribute isn't available, put it in the description + Posts.
+- [ ] If a "professional dealers" style attribute isn't available, put it in the description + Posts.
 
 ## 6. Products / Services
 - [ ] Add services: "Texas Hold'em Tournament — $60 buy-in", "Hold'em Cash Game", "Omaha Cash Game", "Private Poker Room Rental" — each with a short description + link to the matching website page.
@@ -54,7 +54,7 @@ Lead with what you are + where + the differentiators. Draft:
 
 ## 8. Q&A (seed it yourself)
 - [ ] Post and answer the top questions yourself (Google allows owner Q&A):
-  - "Is this legal?" → §47.02 private club, rake-free.
+  - "Is this legal?" → §47.02 private club, pro dealers, real card room.
   - "Do I need a reservation/membership?" → No, walk in.
   - "What are the buy-ins?" → $60 tournament; cash buy-in ranges.
   - "Where do I park?" → Free on-site lot.

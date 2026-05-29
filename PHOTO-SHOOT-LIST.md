@@ -51,7 +51,7 @@ Used on /about/mike-ike/ (and great for /about/). Real faces = trust.
 ### Social / OG image — `og-default.png`
 The preview image when the site is shared (texts, Facebook, etc.).
 - **Currently set** to the real room-and-neon photo (reused from the original site) — already live as `/assets/og-default.png` and referenced sitewide.
-- **Optional upgrade:** replace with a purpose-built **1200 × 630 px** card — the neon/room shot, darkened, with "DEUCES WILD POKER CLUB · Huntsville, TX · Rake-Free" in gold. Just overwrite `/assets/og-default.png`.
+- **Optional upgrade:** replace with a purpose-built **1200 × 630 px** card — the neon/room shot, darkened, with "DEUCES WILD POKER CLUB · Huntsville, TX · Pro Dealers" in gold. Just overwrite `/assets/og-default.png`.
 
 ### Winners wall (optional, later)
 Winner photos go in `/data/winners.json` per entry (`"photo": "/assets/img/winner-name.jpg"`), only with the player's permission.
