@@ -14,6 +14,14 @@
   // strip dashboard vars that aren't listed in this file.
   "keep_vars": true,
 
+  // Bound at runtime via config (this Workers-Builds project only binds what's
+  // here, not dashboard runtime vars). ADMIN_PW_SHA256 = sha256("dwp::<pw>::v1")
+  // — the password hash, NOT plaintext. SHEET_WEBHOOK_URL = Apps Script Web App.
+  "vars": {
+    "ADMIN_PW_SHA256": "e39b415aa1d14f165427123cbac24755b05804190c865fa18e954b8c73d5bd5c",
+    "SHEET_WEBHOOK_URL": "https://script.google.com/macros/s/AKfycbxJrKf3gBcjT29OXABlQnrpf8Z25DuuHAmSq95P2BNnqH3yYnIQZRF4OETuBe11yHwxAA/exec"
+  },
+
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
