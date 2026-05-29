@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Ask for a Review | Deuces Wild</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+<style>
+  .qr-box{width:200px;margin:1rem auto 0}.qr-box svg{width:100%;height:auto;background:#fff;border-radius:10px;padding:8px}
+  @media print{ body *{visibility:hidden} #printcard,#printcard *{visibility:visible} #printcard{position:absolute;inset:0;margin:auto;text-align:center} .noprint{display:none!important} }
+</style>
+</head>
+<body x-data="review()" x-init="load()">
+<div class="wrap" style="max-width:560px;padding:1.25rem 1rem 3rem">
+  <div class="flex aic" style="justify-content:space-between;gap:.5rem">
+    <h1 style="margin:0;font-size:1.8rem">Ask for a Review</h1>
+    <a class="btn btn-ghost" href="/admin/checkin.html" style="font-size:.85rem;padding:.35rem .6rem">← Check-In</a>
+  </div>
+  <p class="muted">After a good night, send a player a quick text — or point them at the QR. More recent reviews = higher in Google's local results.</p>
+
+  <!-- Review link setup -->
+  <div class="panel mt-2 noprint">
+    <div class="field"><label for="rl">Your Google review link</label>
+      <input id="rl" type="url" x-model="url" placeholder="https://g.page/r/XXXX/review" inputmode="url">
+    </div>
+    <button class="btn btn-gold" @click="save()" :disabled="saving" x-text="saving?'Saving…':'Save link'">Save link</button>
+    <span class="muted mono" style="font-size:.8rem;margin-left:.6rem" x-show="savedMsg" x-text="savedMsg"></span>
+    <p class="form-note mt-1">Get this from your Google Business Profile → "Ask for reviews". See GBP-OPTIMIZATION.md.</p>
+  </div>
+
+  <template x-if="url">
+    <div>
+      <!-- One-tap text -->
+      <div class="panel mt-3 noprint">
+        <h3 style="margin-top:0">Text a player</h3>
+        <div class="field"><label for="num">Their mobile (optional)</label>
+          <input id="num" type="tel" x-model="num" placeholder="leave blank to pick from contacts" inputmode="tel">
+        </div>
+        <div class="field"><label for="msg">Message</label>
+          <textarea id="msg" rows="4" x-model="msg"></textarea>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-gold" :href="smsHref()">Open Texts</a>
+          <button class="btn btn-ghost" @click="copy(msg + ' ' + url, 'Message copied')">Copy message</button>
+          <button class="btn btn-ghost" @click="copy(url, 'Link copied')">Copy link</button>
+        </div>
+        <span class="muted mono" style="font-size:.8rem" x-show="copyMsg" x-text="copyMsg"></span>
+      </div>
+
+      <!-- Printable QR for the host stand / table tents -->
+      <div class="panel mt-3" id="printcard">
+        <h3 style="margin-top:0" class="noprint">In-room QR</h3>
+        <p class="center" style="font-family:var(--f-display);font-size:1.6rem;letter-spacing:.03em;margin:.2rem 0">Had fun tonight?</p>
+        <p class="center muted" style="margin:0 0 .4rem">Scan to leave us a Google review</p>
+        <div class="qr-box" id="qr"></div>
+        <p class="center muted mono" style="font-size:.8rem;margin-top:.6rem">Deuces Wild Poker Club</p>
+        <div class="cta-row jcc mt-2 noprint"><button class="btn btn-ghost" @click="window.print()">Print QR card</button></div>
+      </div>
+    </div>
+  </template>
+  <template x-if="!url && loaded">
+    <div class="callout-red callout mt-3">Set your Google review link above to enable the one-tap text and the QR.</div>
+  </template>
+</div>
+<script>
+function review(){return{
+  url:'', num:'', msg:'', saving:false, savedMsg:'', copyMsg:'', loaded:false,
+  async load(){
+    this.msg = "Thanks for coming out to Deuces Wild Poker Club! If you had a good time, a quick Google review really helps us out:";
+    try{ const d=await fetch('/api/review-link').then(r=>r.json()); this.url=d.url||''; }catch(e){}
+    this.loaded=true;
+    this.$nextTick(()=>this.renderQR());
+    this.$watch('url',()=>this.renderQR());
+  },
+  async save(){
+    this.saving=true; this.savedMsg='';
+    try{ const r=await fetch('/api/review-link',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:this.url})});
+      if(r.status===401){location.href='/admin/login.html';return;}
+      const d=await r.json(); this.savedMsg=(r.ok&&d.ok)?'Saved ✓':(d.error||'Error'); this.$nextTick(()=>this.renderQR()); }
+    catch(e){ this.savedMsg='Network error'; } finally{ this.saving=false; }
+  },
+  smsHref(){ return 'sms:'+(this.num||'')+'?&body='+encodeURIComponent(this.msg+' '+this.url); },
+  async copy(t,label){ try{ await navigator.clipboard.writeText(t); this.copyMsg=label; setTimeout(()=>this.copyMsg='',1800);}catch(e){ this.copyMsg='Copy failed'; } },
+  renderQR(){ var el=document.getElementById('qr'); if(!el||!this.url||typeof qrcode==='undefined')return;
+    var qr=qrcode(0,'M'); qr.addData(this.url); qr.make(); el.innerHTML=qr.createSvgTag({cellSize:5,margin:1,scalable:true}); }
+};}
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>Leave a Review | Deuces Wild Poker Club</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<main id="main" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem;text-align:center"
+      x-data="{url:'',loaded:false}"
+      x-init="fetch('/api/review-link').then(r=>r.json()).then(d=>{url=d.url||'';loaded=true;if(url){location.replace(url);}}).catch(()=>loaded=true)">
+  <div style="max-width:460px">
+    <p class="eyebrow">Deuces Wild Poker Club</p>
+    <h1>Leave Us a <span class="gold">Review</span></h1>
+    <p class="lead" x-show="url">Taking you to Google… thanks for the support!</p>
+    <a class="btn btn-gold btn-lg mt-2" :href="url" x-show="url">Open Google Review</a>
+
+    <template x-if="loaded && !url">
+      <div>
+        <p class="lead">Our review link isn't set up yet — but we'd still love your feedback.</p>
+        <a class="btn btn-gold btn-lg mt-2" href="/contact/">Contact Us</a>
+      </div>
+    </template>
+    <p class="muted mt-3"><a href="/">← Back to deuceswildpokertx.com</a></p>
+  </div>
+</main>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</body>
+</html>

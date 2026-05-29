@@ -28,9 +28,12 @@ import { onRequestPost as smsPost } from './functions/api/sms-optin.js';
 import { onRequestPost as referPost } from './functions/api/refer.js';
 import { onRequestGet as winnersGet } from './functions/api/winners.js';
 import { onRequestPost as contactPost } from './functions/api/contact.js';
+import { onRequestGet as reviewGet, onRequestPost as reviewPost } from './functions/api/review-link.js';
 
-// API paths that do NOT require admin auth.
+// API paths that do NOT require admin auth (any method).
 const PUBLIC_API = new Set(['/api/sessions', '/api/sms-optin', '/api/refer', '/api/login', '/api/winners', '/api/contact']);
+// Paths public for GET only (writes still require admin).
+const PUBLIC_GET = new Set(['/api/review-link']);
 
 const jsonErr = (msg, status) =>
   new Response(JSON.stringify({ error: msg }), { status, headers: { 'Content-Type': 'application/json' } });
@@ -53,6 +56,8 @@ const ROUTES = {
   'POST /api/refer': referPost,
   'GET /api/winners': winnersGet,
   'POST /api/contact': contactPost,
+  'GET /api/review-link': reviewGet,
+  'POST /api/review-link': reviewPost,
 };
 
 export default {
@@ -62,7 +67,8 @@ export default {
 
     // ---------- API ----------
     if (path === '/api' || path.startsWith('/api/')) {
-      if (!PUBLIC_API.has(path) && !(await isAuthed(request, env))) {
+      const isPublic = PUBLIC_API.has(path) || (request.method === 'GET' && PUBLIC_GET.has(path));
+      if (!isPublic && !(await isAuthed(request, env))) {
         return jsonErr('Unauthorized', 401);
       }
       const handler = ROUTES[`${request.method} ${path}`];
