@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Where exactly is Deuces Wild in Huntsville?", "acceptedAnswer": {"@type": "Answer", "text": "We're at 120 FM 2821 Rd E in Huntsville, just off FM 2821 and only a few minutes from the downtown square and Sam Houston State University. There's free on-site parking."}}, {"@type": "Question", "name": "Is there legal poker in Huntsville?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Deuces Wild operates as a legal private club under the Texas Penal Code §47.02 private-place exemption, and it's rake-free — the house never takes a cut of any pot."}}, {"@type": "Question", "name": "Do I need a reservation or membership to play?", "acceptedAnswer": {"@type": "Answer", "text": "No. Walk in any night we're open — Wednesday through Saturday — and grab a seat. No reservation and no membership are needed to come check it out."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From Huntsville</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">Poker in Huntsville doesn't mean a 90-minute drive to a Houston card room anymore. Deuces Wild Poker Club is right here in town — a legal, rake-free private poker club minutes from Sam Houston State and the downtown square. Wednesday and Saturday tournaments, cash games four nights a week, and walk-ins are always welcome.</p>
-          <p>Whether you're a student, a TDCJ employee getting off shift, or a local who's been driving to casinos for years, this is your home game now. No membership to come check it out — just walk in any night the doors are open.</p>
+                    <p class="lead">For years, serious poker in Huntsville meant pointing the car down I-45 toward Houston and giving up most of an evening to the drive. That's over. Deuces Wild Poker Club is a legal, rake-free private poker club right here in town, tucked just off FM 2821 a few minutes from the downtown square and the Sam Houston State University campus. Texas Hold'em and Omaha run as cash games four nights a week, with tournaments on Wednesday and Saturday, and walk-ins are always welcome.</p>
+          <p>Being the local room means the crowd is local too — people from around Huntsville and the surrounding Walker County towns who come back week after week. You don't need a membership to come see it for the first time, and you don't need a reservation. Park on site, walk in any night we're open, and find a seat at a real table with professional dealers running every game.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM Huntsville ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">Huntsville</span></h2>
+      <p class="lead">Most poker pitches in this town are about whether a drive is worth it. Yours isn't a drive at all — it's five to ten minutes across Huntsville. The reason to come is simpler: every other room within reach takes a rake out of your pots, and we don't. When the house never touches the pot, the money that used to disappear into the rake stays on the table for the players. The closest real card room is also the one that lets you keep what you win.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from Huntsville) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near Huntsville <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>Where exactly is Deuces Wild in Huntsville?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>We're at 120 FM 2821 Rd E in Huntsville, just off FM 2821 and only a few minutes from the downtown square and Sam Houston State University. There's free on-site parking.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there legal poker in Huntsville?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>Yes. Deuces Wild operates as a legal private club under the Texas Penal Code §47.02 private-place exemption, and it's rake-free — the house never takes a cut of any pot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation or membership to play?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No. Walk in any night we're open — Wednesday through Saturday — and grab a seat. No reservation and no membership are needed to come check it out.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

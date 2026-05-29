@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from Lufkin?", "acceptedAnswer": {"@type": "Answer", "text": "About 70 miles and roughly 80 minutes — a drive southwest along the US-59/US-69 corridor from Lufkin to Huntsville."}}, {"@type": "Question", "name": "Is there rake-free poker near Lufkin?", "acceptedAnswer": {"@type": "Answer", "text": "The nearest legal, rake-free room is Deuces Wild in Huntsville, about 80 minutes southwest. The house takes no rake on any pot."}}, {"@type": "Question", "name": "Do I need a reservation coming from Lufkin?", "acceptedAnswer": {"@type": "Answer", "text": "No — walk in any night we're open, Wednesday through Saturday. No reservation or membership is required to play."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From Lufkin</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">Lufkin players willing to make a road trip will find Deuces Wild about 80 minutes southwest. For a rake-free room with a real tournament series, it's the closest serious poker in the region.</p>
-          <p>Make it a Saturday: the 6 PM tournament, then a cash game, and not a dollar of rake the whole night. Walk in — no reservation needed.</p>
+                    <p class="lead">Lufkin, the Angelina County seat, sits up in the Piney Woods, connected toward Huntsville by the US-59/US-69 corridor. The trip to Deuces Wild runs about eighty minutes southwest — a road trip, but a clean one on familiar highways. For East Texas players around Lufkin, it's the closest serious, rake-free poker: a real card room with an actual tournament series rather than a home game or a long drive to a casino.</p>
+          <p>At the end of the drive is a proper room in Huntsville — professional dealers, Hold'em and Omaha cash games every night the doors are open, and tournaments on Wednesday and Saturday with a transparent structure. The field stays friendly and the seating is easy. Walk in any night we're open; no reservation and no membership needed to take a seat.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM Lufkin ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">Lufkin</span></h2>
+      <p class="lead">Eighty minutes is a genuine road trip, so make it count: come Saturday for the 6 PM tournament, sit in the cash game after, and play the whole night without a single dollar going to rake. That's the difference that justifies the drive from Lufkin — every other room within reach takes a cut, and Deuces Wild doesn't. For serious East Texas players, it's the nearest table that pays you back instead of taxing every hand.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from Lufkin) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near Lufkin <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from Lufkin?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>About 70 miles and roughly 80 minutes — a drive southwest along the US-59/US-69 corridor from Lufkin to Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there rake-free poker near Lufkin?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>The nearest legal, rake-free room is Deuces Wild in Huntsville, about 80 minutes southwest. The house takes no rake on any pot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from Lufkin?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No — walk in any night we're open, Wednesday through Saturday. No reservation or membership is required to play.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

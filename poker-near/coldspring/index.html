@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from Coldspring?", "acceptedAnswer": {"@type": "Answer", "text": "About 25 miles and roughly 35 minutes — a drive west on TX-150 from Coldspring into Huntsville."}}, {"@type": "Question", "name": "Is there legal poker near Coldspring?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the nearest legal, rake-free room is Deuces Wild in Huntsville, about 35 minutes west on TX-150. The house never takes a rake."}}, {"@type": "Question", "name": "Do I need a reservation coming from Coldspring?", "acceptedAnswer": {"@type": "Answer", "text": "No. Walk in any night we're open, Wednesday through Saturday — no reservation or membership required to take a seat."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From Coldspring</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">Coldspring is a quiet 35 minutes from Deuces Wild on TX-150. It's the closest place to play legal, rake-free poker in a real card room.</p>
-          <p>No membership needed to come see it. Grab a seat in a cash game or come for a tournament — the doors are open Wednesday through Saturday.</p>
+                    <p class="lead">Coldspring, the San Jacinto County seat, sits east of Huntsville along TX-150, which makes the trip to Deuces Wild a quiet thirty-five-minute drive west through the country. For a small county-seat town, having a legal, rake-free poker club that close is a real find — it's the nearest place to sit down in an actual card room rather than a home game or a long highway trip.</p>
+          <p>The drive into Huntsville ends at professional tables: Hold'em and Omaha cash games every night the doors are open and tournaments on Wednesday and Saturday with a transparent structure. The crowd is friendly and the seating is easy. You don't need a membership to come see it — walk in any night we're open and take a seat in a cash game or a tournament.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM Coldspring ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">Coldspring</span></h2>
+      <p class="lead">Thirty-five minutes west on TX-150 is a calm, easy drive from Coldspring, and the reason to make it is the rake you won't pay. Deuces Wild never takes a cut of the pot, so the money stays with the players. For someone around the San Jacinto County seat, that's the nearest real card room and the only one close by that lets you keep every dollar you win — an easy trade for a short country drive.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from Coldspring) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near Coldspring <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from Coldspring?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>About 25 miles and roughly 35 minutes — a drive west on TX-150 from Coldspring into Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there legal poker near Coldspring?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>Yes — the nearest legal, rake-free room is Deuces Wild in Huntsville, about 35 minutes west on TX-150. The house never takes a rake.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from Coldspring?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No. Walk in any night we're open, Wednesday through Saturday — no reservation or membership required to take a seat.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

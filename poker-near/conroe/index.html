@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from Conroe?", "acceptedAnswer": {"@type": "Answer", "text": "It's about 35 miles and roughly a 40-minute drive — a straight shot north up I-45 from Conroe to Huntsville."}}, {"@type": "Question", "name": "Is there rake-free poker near Conroe?", "acceptedAnswer": {"@type": "Answer", "text": "The nearest legal, rake-free room is Deuces Wild in Huntsville, about 40 minutes up I-45. The house never takes a cut of any pot."}}, {"@type": "Question", "name": "Do I need a reservation coming from Conroe?", "acceptedAnswer": {"@type": "Answer", "text": "No — just walk in any night we're open, Wednesday through Saturday. There's no reservation or membership required to take a seat."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From Conroe</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">Conroe poker players have options, but none of them are rake-free. Deuces Wild is a 40-minute straight shot up I-45 from Conroe, and the math is simple: every hand you play here, you keep what you win. No house cut on cash games.</p>
-          <p>Smaller fields than the big Houston rooms, professional dealers, and regulars who'll know your name by your second visit. If you're tired of grinding off the rake at a crowded room, the drive pays for itself.</p>
+                    <p class="lead">Conroe sits right on I-45, which makes the trip to Deuces Wild about as simple as a drive gets: point north and stay on the interstate for roughly forty minutes. Conroe players aren't short on places to gamble — between the Lake Conroe area and the rooms down toward Houston, there are options — but the rake at those rooms quietly eats into every session. Deuces Wild is a legal, rake-free private poker club in Huntsville where the house never takes a cut.</p>
+          <p>What you'll find at the top of that drive is a real card room, not an overcrowded grind. Texas Hold'em and Omaha cash games run every night we're open, with tournaments Wednesday and Saturday. The fields tend to be smaller and friendlier than the big southern rooms, the dealers are professional, and walk-ins are always welcome — no reservation required.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM Conroe ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">Conroe</span></h2>
+      <p class="lead">If you're already driving across Conroe or down toward Houston for a game, you're already spending the time — the only question is whether you're driving toward rake or away from it. Forty minutes up I-45 puts you in a room that takes zero rake on cash games. Run the math on what a typical session's rake costs you and the gas to get here looks cheap. You drive the same distance either way; one direction lets you keep what you win.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from Conroe) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near Conroe <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from Conroe?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>It's about 35 miles and roughly a 40-minute drive — a straight shot north up I-45 from Conroe to Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there rake-free poker near Conroe?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>The nearest legal, rake-free room is Deuces Wild in Huntsville, about 40 minutes up I-45. The house never takes a cut of any pot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from Conroe?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No — just walk in any night we're open, Wednesday through Saturday. There's no reservation or membership required to take a seat.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

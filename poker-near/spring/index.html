@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from Spring?", "acceptedAnswer": {"@type": "Answer", "text": "About 60 miles and roughly 65 minutes — a straight shot north up I-45 from Spring to Huntsville."}}, {"@type": "Question", "name": "Is there rake-free poker near Spring?", "acceptedAnswer": {"@type": "Answer", "text": "The nearest legal, rake-free room is Deuces Wild in Huntsville, a little over an hour up I-45. There's no house cut on any pot."}}, {"@type": "Question", "name": "Do I need a reservation coming from Spring?", "acceptedAnswer": {"@type": "Answer", "text": "No — just walk in any night we're open, Wednesday through Saturday. No reservation or membership is required."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From Spring</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">Spring poker players already drive for their game. The question is whether you're driving toward rake or away from it. Deuces Wild is a clean run up I-45 with no house cut on your cash-game winnings.</p>
-          <p>It's a real card room with professional dealers and a transparent tournament structure — not a back-room game and not a casino circus. Bring a friend; the drive's better with two.</p>
+                    <p class="lead">Spring sits right on I-45 north of Houston, near Old Town Spring, which makes the trip to Deuces Wild a single uncomplicated drive — stay on the interstate north for a little over an hour. Players around Spring already log plenty of windshield time chasing a good game; the difference here is the destination. Deuces Wild is a legal, rake-free private poker club in Huntsville where the house never takes a piece of the pot.</p>
+          <p>At the end of that drive is a real card room: professional dealers at every table, a transparent tournament structure on Wednesday and Saturday, and Hold'em and Omaha cash games running every night we're open. It's not a back-room game and it's not a sprawling casino floor — it's a clean, well-run room where walk-ins are always welcome and you don't need a membership to try it.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM Spring ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">Spring</span></h2>
+      <p class="lead">You're going to drive for poker from Spring no matter what — so drive the direction that pays. A little over an hour up I-45 puts you at a rake-free table, and the rake you'd otherwise leave behind in a single session often covers the gas with room to spare. Make it a two-person trip and the drive itself gets cheaper and more fun; the zero-rake table is the same either way.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from Spring) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near Spring <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from Spring?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>About 60 miles and roughly 65 minutes — a straight shot north up I-45 from Spring to Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there rake-free poker near Spring?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>The nearest legal, rake-free room is Deuces Wild in Huntsville, a little over an hour up I-45. There's no house cut on any pot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from Spring?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No — just walk in any night we're open, Wednesday through Saturday. No reservation or membership is required.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

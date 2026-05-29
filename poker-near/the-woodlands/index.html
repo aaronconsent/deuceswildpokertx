@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from The Woodlands?", "acceptedAnswer": {"@type": "Answer", "text": "About 50 miles and roughly 55 minutes — a straight run north up I-45 from The Woodlands to Huntsville."}}, {"@type": "Question", "name": "Is there rake-free poker near The Woodlands?", "acceptedAnswer": {"@type": "Answer", "text": "The nearest legal, rake-free room is Deuces Wild in Huntsville, under an hour up I-45. The house takes no rake on any pot."}}, {"@type": "Question", "name": "Do I need a reservation coming from The Woodlands?", "acceptedAnswer": {"@type": "Answer", "text": "No. Walk in any night we're open, Wednesday through Saturday — no reservation or membership needed to play."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From The Woodlands</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">The Woodlands has the closest big-room poker in the region, but it comes with Houston-room rake and Houston-room crowds. Deuces Wild is under an hour north on I-45 — far enough to feel like a getaway, close enough to make on a weeknight.</p>
-          <p>Players who make the drive from The Woodlands tell us the same thing: smaller field, faster seats, zero rake, and a room where the owners actually know you. Run the rake math and the 55 minutes is the best-paying drive you'll make all week.</p>
+                    <p class="lead">The Woodlands is the kind of place where poker is never far away, but the rooms within easy reach charge a rake and pack the tables. Deuces Wild is a different proposition: a legal, rake-free private poker club in Huntsville, just under an hour straight up I-45 from The Woodlands. It's far enough to feel like you've left the suburb behind for the evening, and close enough to do on a weeknight and still get home.</p>
+          <p>Up the road you'll find a room built around the players instead of the house. Cash games in Hold'em and Omaha run every night the doors are open, tournaments land Wednesday and Saturday, and the field is smaller and quicker to seat than the big rooms to the south. The dealers are professional, the structure is transparent, and walk-ins are always welcome.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM The Woodlands ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">The Woodlands</span></h2>
+      <p class="lead">From The Woodlands you're already used to a short hop for a game — Deuces Wild just asks you to point that hop north on I-45 instead. The payoff is zero rake on cash games, which over a full session adds up to real money that stays in front of you. Add in smaller fields and faster seating than a crowded Houston-area room, and the 55 minutes turns into the best-paying drive on your calendar.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from The Woodlands) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near The Woodlands <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from The Woodlands?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>About 50 miles and roughly 55 minutes — a straight run north up I-45 from The Woodlands to Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there rake-free poker near The Woodlands?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>The nearest legal, rake-free room is Deuces Wild in Huntsville, under an hour up I-45. The house takes no rake on any pot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from The Woodlands?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No. Walk in any night we're open, Wednesday through Saturday — no reservation or membership needed to play.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

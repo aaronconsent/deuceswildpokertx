@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from Humble?", "acceptedAnswer": {"@type": "Answer", "text": "About 70 miles and roughly 75 minutes — a drive north along the US-59 and I-45 corridor from Humble to Huntsville."}}, {"@type": "Question", "name": "Is there rake-free poker near Humble?", "acceptedAnswer": {"@type": "Answer", "text": "The nearest legal, rake-free room is Deuces Wild in Huntsville, about 75 minutes north. The house takes no rake on any pot."}}, {"@type": "Question", "name": "Do I need a reservation coming from Humble?", "acceptedAnswer": {"@type": "Answer", "text": "No — walk in any night we're open, Wednesday through Saturday. No reservation or membership is required to play."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From Humble</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">Humble and the north Houston suburbs are about 75 minutes from Deuces Wild. For a rake-free room with smaller fields and a real tournament structure, it's the best-paying drive you'll make.</p>
-          <p>No Houston-room rake, no Houston-room crowds. Just a clean card room, professional dealers, and walk-in-welcome poker Wednesday through Saturday.</p>
+                    <p class="lead">Humble sits in north Houston near the US-59/I-69 corridor, with a straightforward run north toward Huntsville — about seventy-five minutes to Deuces Wild. For players around Humble and the north Houston suburbs, that drive ends somewhere the local rooms can't match: a legal, rake-free poker club where the house never takes a cut, with smaller fields and a real tournament structure.</p>
+          <p>The trip north lands you at a clean, professional card room in Huntsville. Hold'em and Omaha cash games run every night the doors are open, tournaments land Wednesday and Saturday on a transparent structure, and the field is friendlier and quicker to seat than a crowded big-city room. Walk in any night we're open — no reservation and no membership needed to take a seat.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM Humble ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">Humble</span></h2>
+      <p class="lead">Coming from Humble, you're trading big-room rake and big-room crowds for a clean table about seventy-five minutes north. The rake is the whole point: Deuces Wild takes none, so over a session the money you'd normally leave behind stays in front of you. Add smaller fields and faster seating, and the drive earns its keep — it's the best-paying trip on the calendar for a north Houston player.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from Humble) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near Humble <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from Humble?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>About 70 miles and roughly 75 minutes — a drive north along the US-59 and I-45 corridor from Humble to Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there rake-free poker near Humble?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>The nearest legal, rake-free room is Deuces Wild in Huntsville, about 75 minutes north. The house takes no rake on any pot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from Humble?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No — walk in any night we're open, Wednesday through Saturday. No reservation or membership is required to play.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

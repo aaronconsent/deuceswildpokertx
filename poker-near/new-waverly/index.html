@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from New Waverly?", "acceptedAnswer": {"@type": "Answer", "text": "About 12 miles and roughly 15 minutes — a quick run north up I-45 from New Waverly to Huntsville."}}, {"@type": "Question", "name": "Is there legal poker near New Waverly?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the nearest legal, rake-free room is Deuces Wild in Huntsville, about 15 minutes up I-45. The house never takes a rake."}}, {"@type": "Question", "name": "Do I need a reservation coming from New Waverly?", "acceptedAnswer": {"@type": "Answer", "text": "No. Walk in any night we're open, Wednesday through Saturday — no reservation or membership required to take a seat."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From New Waverly</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">New Waverly is practically next door — about 15 minutes to Deuces Wild. If you've been driving past Huntsville on the way to a poker game somewhere else, stop here instead.</p>
-          <p>Rake-free cash games, twice-weekly tournaments, and a room full of people from right around here. Your closest real card room is closer than you thought.</p>
+                    <p class="lead">New Waverly sits just south of Huntsville on I-45, on the edge of the Sam Houston National Forest, which makes Deuces Wild about as local as a card room can get — roughly fifteen minutes up the interstate. If you've been driving past Huntsville on your way to a game farther off, there's now no reason to keep going. Deuces Wild is a legal, rake-free private poker club practically in your backyard.</p>
+          <p>The short drive lands you in a real room: professional dealers, Hold'em and Omaha cash games every night the doors are open, and tournaments on Wednesday and Saturday. A lot of the crowd comes from right around here — New Waverly, Huntsville, and the towns nearby — so you'll see familiar faces fast. Walk in any night we're open; no reservation or membership needed.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM New Waverly ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">New Waverly</span></h2>
+      <p class="lead">There's barely a drive to talk about — fifteen minutes up I-45 from New Waverly. So the reason to come isn't distance, it's the rake. Anywhere else you'd play, the house takes a piece of every pot; here it takes nothing. For a New Waverly player, the closest real card room is also the one that lets you keep every dollar you win, which makes the short hop north the easiest poker decision around.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from New Waverly) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near New Waverly <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from New Waverly?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>About 12 miles and roughly 15 minutes — a quick run north up I-45 from New Waverly to Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there legal poker near New Waverly?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>Yes — the nearest legal, rake-free room is Deuces Wild in Huntsville, about 15 minutes up I-45. The house never takes a rake.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from New Waverly?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No. Walk in any night we're open, Wednesday through Saturday — no reservation or membership required to take a seat.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

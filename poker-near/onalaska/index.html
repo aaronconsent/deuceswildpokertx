@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from Onalaska?", "acceptedAnswer": {"@type": "Answer", "text": "About 35 miles and roughly 45 minutes — a run west on US-190 from Onalaska to Huntsville."}}, {"@type": "Question", "name": "Is there rake-free poker near Onalaska?", "acceptedAnswer": {"@type": "Answer", "text": "The nearest legal, rake-free room is Deuces Wild in Huntsville, about 45 minutes west on US-190. The house takes no rake on any pot."}}, {"@type": "Question", "name": "Do I need a reservation coming from Onalaska?", "acceptedAnswer": {"@type": "Answer", "text": "No — walk in any night we're open, Wednesday through Saturday. No reservation or membership is required to play."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From Onalaska</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">Onalaska and the west shore of Lake Livingston are about 45 minutes from Deuces Wild. For lake-area players, it's the nearest legal poker room — and it's rake-free.</p>
-          <p>Trade the home game for a real table with professional dealers and a transparent structure. Walk in any night we're open.</p>
+                    <p class="lead">Onalaska sits on the west shore of Lake Livingston, connected to Huntsville by US-190, which puts Deuces Wild about forty-five minutes west. For players around Onalaska and the lake's western side, it's the nearest legal poker room of any kind — and unlike most of what's within reach, it's completely rake-free. Deuces Wild is a real card room in Huntsville, not a casino trek or a kitchen-table game.</p>
+          <p>The drive west ends at professional tables: Hold'em and Omaha cash games every night the doors are open and tournaments on Wednesday and Saturday, all on a transparent structure. The field is friendly and quick to seat. Walk in any night we're open — no reservation, no membership needed — and trade the home game for a proper room with dealers who run a clean game.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM Onalaska ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">Onalaska</span></h2>
+      <p class="lead">Forty-five minutes west on US-190 is an easy run from the Onalaska side of Lake Livingston, and what makes it worth it is the rake — there isn't one. Deuces Wild never takes a cut, so the pot stays with the players. For a lake-area player used to a home game or a long drive to a casino, this is the nearest real table and the only one nearby that lets you keep everything you win.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from Onalaska) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near Onalaska <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from Onalaska?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>About 35 miles and roughly 45 minutes — a run west on US-190 from Onalaska to Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there rake-free poker near Onalaska?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>The nearest legal, rake-free room is Deuces Wild in Huntsville, about 45 minutes west on US-190. The house takes no rake on any pot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from Onalaska?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No — walk in any night we're open, Wednesday through Saturday. No reservation or membership is required to play.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

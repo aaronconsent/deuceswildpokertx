@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from Point Blank?", "acceptedAnswer": {"@type": "Answer", "text": "About 30 miles and roughly 40 minutes — a drive west on US-190 from Point Blank toward Huntsville."}}, {"@type": "Question", "name": "Is there rake-free poker near Point Blank?", "acceptedAnswer": {"@type": "Answer", "text": "The nearest legal, rake-free room is Deuces Wild in Huntsville, about 40 minutes west on US-190. The house takes no rake on any pot."}}, {"@type": "Question", "name": "Do I need a reservation coming from Point Blank?", "acceptedAnswer": {"@type": "Answer", "text": "No — walk in any night we're open, Wednesday through Saturday. No reservation or membership is required to play."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From Point Blank</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">Point Blank sits about 40 minutes from Deuces Wild along the Lake Livingston corridor. For a rake-free card room, that's a short, scenic drive.</p>
-          <p>Cash games nightly, tournaments twice a week, and a friendly room full of folks from around the lake. Walk-ins always welcome.</p>
+                    <p class="lead">Point Blank sits along US-190 on the Lake Livingston side of the county, which puts Deuces Wild about forty minutes west toward Huntsville. It's a short, scenic run along the lake corridor, and at the end of it is a legal, rake-free poker room — the nearest real card room to this stretch of the lake, rather than a home game or a long casino drive.</p>
+          <p>The trip ends at professional tables in Huntsville: Hold'em and Omaha cash games every night the doors are open and tournaments on Wednesday and Saturday with a transparent structure. A good part of the room comes from around the lake, so the crowd feels familiar fast. Walk in any night we're open — no reservation and no membership needed to take a seat.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM Point Blank ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">Point Blank</span></h2>
+      <p class="lead">Forty minutes west along the Lake Livingston corridor is a pleasant drive from Point Blank, and what makes it pay is the rake — meaning none. Deuces Wild never takes a cut of the pot. For a player on this side of the lake, that's the closest real table and the only one nearby that lets you keep everything you win, which turns a scenic trip into Huntsville into an easy call.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from Point Blank) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near Point Blank <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from Point Blank?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>About 30 miles and roughly 40 minutes — a drive west on US-190 from Point Blank toward Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there rake-free poker near Point Blank?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>The nearest legal, rake-free room is Deuces Wild in Huntsville, about 40 minutes west on US-190. The house takes no rake on any pot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from Point Blank?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No — walk in any night we're open, Wednesday through Saturday. No reservation or membership is required to play.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

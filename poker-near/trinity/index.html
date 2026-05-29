@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from Trinity?", "acceptedAnswer": {"@type": "Answer", "text": "About 30 miles and roughly 35 minutes — a scenic drive south down TX-19 from Trinity into Huntsville."}}, {"@type": "Question", "name": "Is there rake-free poker near Trinity?", "acceptedAnswer": {"@type": "Answer", "text": "The nearest legal, rake-free room is Deuces Wild in Huntsville, about 35 minutes down TX-19. The house takes no rake on any pot."}}, {"@type": "Question", "name": "Do I need a reservation coming from Trinity?", "acceptedAnswer": {"@type": "Answer", "text": "No — walk in any night we're open, Wednesday through Saturday. No reservation or membership is required to play."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From Trinity</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">Trinity is a scenic 35 minutes down TX-19 to Huntsville and Deuces Wild. It's the closest legal, rake-free poker room to the whole Trinity area.</p>
-          <p>Professional dealers, a clear tournament structure, and a room where you're a regular by your second night — not a number.</p>
+                    <p class="lead">Trinity sits up TX-19 north of Huntsville, between the Trinity River and the upper reaches of Lake Livingston, which puts Deuces Wild about a 35-minute drive south down the highway. It's a scenic, easy run, and at the end of it is the closest legal, rake-free poker room to the whole Trinity area — a real card room rather than a home game or a long trip to the city.</p>
+          <p>The drive lands you at professional tables with a clear, published tournament structure on Wednesday and Saturday and Hold'em and Omaha cash games every night the doors are open. The room is small enough that you become a regular fast — recognized by your second night, not treated like a number. Walk in any night we're open; no reservation and no membership needed to take a seat.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM Trinity ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">Trinity</span></h2>
+      <p class="lead">Thirty-five minutes down TX-19 is a short, pretty drive, and the reason to make it is the rake you leave behind — meaning none. Deuces Wild never takes a cut of the pot, so what you win is what you keep. For a Trinity player, that's the nearest real room and the only one nearby that doesn't quietly tax every hand, which makes the scenic trip south an easy call.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from Trinity) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near Trinity <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from Trinity?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>About 30 miles and roughly 35 minutes — a scenic drive south down TX-19 from Trinity into Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there rake-free poker near Trinity?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>The nearest legal, rake-free room is Deuces Wild in Huntsville, about 35 minutes down TX-19. The house takes no rake on any pot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from Trinity?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No — walk in any night we're open, Wednesday through Saturday. No reservation or membership is required to play.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 

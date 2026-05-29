@@ -52,6 +52,9 @@
   "sameAs":["https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320"]
 }
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How far is Deuces Wild from Montgomery?", "acceptedAnswer": {"@type": "Answer", "text": "About 45 miles and roughly 55 minutes — TX-105 over to I-45, then north to Huntsville."}}, {"@type": "Question", "name": "Is there rake-free poker near Montgomery or Lake Conroe?", "acceptedAnswer": {"@type": "Answer", "text": "The nearest legal, rake-free room is Deuces Wild in Huntsville, about 55 minutes away. The house takes no rake on any pot."}}, {"@type": "Question", "name": "Do I need a reservation coming from Montgomery?", "acceptedAnswer": {"@type": "Answer", "text": "No. Walk in any night we're open, Wednesday through Saturday — no reservation or membership required to play."}}]}
+</script>
 <!-- SCHEMA END -->
 </head>
 <body>
@@ -137,8 +140,8 @@
         <div>
           <p class="eyebrow">Why Players Drive In From Montgomery</p>
           <h2>The Closest <span class="gold">Rake-Free</span> Room</h2>
-          <p class="lead">Montgomery and the Lake Conroe area sit a comfortable 55 minutes from Deuces Wild. For a rake-free room with a real tournament structure, that's an easy weeknight trip.</p>
-          <p>Cash games run every night we're open, Hold'em and Omaha both, and the Wednesday/Saturday tournaments give you a reason to make the drive a habit.</p>
+                    <p class="lead">Montgomery sits on the west side of Lake Conroe, a short run over to I-45 by way of TX-105. From there it's a straightforward trip north to Huntsville and Deuces Wild — about 55 minutes all told. For an area better known for the lake than for card rooms, having a legal, rake-free poker club within an hour is a real change, and it's an easy weeknight trip for anyone around Montgomery or the western shore of Lake Conroe.</p>
+          <p>The room itself is built for players who actually want to play. Hold'em and Omaha cash games run every night the doors are open, with tournaments on Wednesday and Saturday and a transparent structure you can plan around. Dealers are professional, the field stays friendly, and walk-ins are always welcome — no reservation and no membership needed to come see it.</p>
           <div class="callout mt-3">Operating legally as a private club under <strong>Texas Penal Code §47.02</strong> (private-place exemption). We never take a rake — you keep what you win.</div>
         </div>
         <div class="panel">
@@ -167,6 +170,41 @@
         <div class="card"><h3>Sat</h3><p class="mono">6:00 PM – Last Hand</p><p>Hold'em Tournament 6 PM<br>Cash games all night</p></div>
       </div>
       <div class="cta-row jcc mt-4"><a class="btn btn-gold" href="/tournaments/">Tournament Structure &amp; Countdown</a></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY DRIVE FROM Montgomery ===== -->
+  <section class="section-panel">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Is The Drive Worth It?</p>
+      <h2>Why Drive From <span class="gold">Montgomery</span></h2>
+      <p class="lead">The Lake Conroe area has plenty of ways to spend an evening, but a rake-free poker table isn't usually one of them. Fifty-five minutes by way of TX-105 and I-45 fixes that, and the reason it's worth it is the rake you don't pay: at Deuces Wild the house never takes a cut, so the money stays with the players. For a Montgomery local, that's a short drive to the closest room that actually lets you keep what you win.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ (from Montgomery) ===== -->
+  <section class="section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow center">Straight Answers</p>
+      <h2 class="center">Poker Near Montgomery <span class="gold">FAQ</span></h2>
+      <div class="mt-4" x-data="{open:0}">
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===1?0:1" :aria-expanded="open===1"><span>How far is Deuces Wild from Montgomery?</span><span class="plus" x-text="open===1?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===1" x-collapse>About 45 miles and roughly 55 minutes — TX-105 over to I-45, then north to Huntsville.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===2?0:2" :aria-expanded="open===2"><span>Is there rake-free poker near Montgomery or Lake Conroe?</span><span class="plus" x-text="open===2?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===2" x-collapse>The nearest legal, rake-free room is Deuces Wild in Huntsville, about 55 minutes away. The house takes no rake on any pot.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" @click="open=open===3?0:3" :aria-expanded="open===3"><span>Do I need a reservation coming from Montgomery?</span><span class="plus" x-text="open===3?'–':'+'"></span></button>
+          <div class="faq-a" x-show="open===3" x-collapse>No. Walk in any night we're open, Wednesday through Saturday — no reservation or membership required to play.</div>
+        </div>
+      </div>
+      <div class="cta-row jcc mt-4">
+        <a class="btn btn-gold btn-lg" href="/first-visit/">Plan Your First Visit</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=120+FM+2821+Rd+E,+Huntsville,+TX+77320" target="_blank" rel="noopener">Get Directions</a>
+      </div>
     </div>
   </section>
 
