@@ -12,7 +12,7 @@
 //
 // Bindings (wrangler.jsonc): ASSETS (static assets), DB (D1), STATUS (KV).
 // Secret: ADMIN_PASSWORD.
-// (deploy nudge: ensure latest version + secrets are picked up)
+// (deploy nudge: rebuild after reconnecting GitHub + restoring secrets)
 // ============================================================================
 import { isAuthed } from './functions/_shared/auth.js';
 import { onRequestGet as sessionsGet } from './functions/api/sessions.js';
